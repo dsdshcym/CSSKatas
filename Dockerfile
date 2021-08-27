@@ -4,8 +4,7 @@
 FROM hexpm/elixir:1.12.1-erlang-24.0.1-alpine-3.13.3 AS build
 
 # install build dependencies
-# TODO: remove git once phoenix v1.6 is released
-RUN apk add --no-cache build-base npm git
+RUN apk add --no-cache build-base npm
 
 # prepare build dir
 WORKDIR /app
