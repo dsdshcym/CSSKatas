@@ -1,0 +1,19 @@
+name: Continuous Delivery
+
+on:
+  push:
+    branches:
+      - "master"
+
+env:
+  FLY_TOKEN: ${{ secrets.FLY_TOKEN }}
+
+jobs:
+  deploy:
+    name: Deploy to fly.io
+    runs-on: ubuntu-latest
+    steps:
+      - name: install flyctl
+        run: curl -L https://fly.io/install.sh | sh
+      - name: deploy
+        run: flyctl --access-token "${env.FLY_TOKEN}" deploy .
