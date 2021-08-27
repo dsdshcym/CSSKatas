@@ -3,5 +3,8 @@
     "autoprefixer": "^10.3.2",
     "postcss": "^8.3.6",
     "tailwindcss": "^2.2.7"
+  },
+  "scripts": {
+    "deploy": "NODE_ENV=production tailwindcss --postcss -i css/app.css -o ../priv/static/assets/app.css"
   }
 }
