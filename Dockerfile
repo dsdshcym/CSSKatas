@@ -28,6 +28,9 @@ COPY config config
 RUN mix deps.get --only prod && \
     mix deps.compile
 
+COPY assets/package.json assets/package-lock.json ./assets/
+RUN npm --prefix ./assets clean-install --progress=false --no-audit --loglevel=error
+
 COPY priv priv
 COPY assets assets
 
