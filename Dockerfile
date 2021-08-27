@@ -34,10 +34,8 @@ RUN npm --prefix ./assets clean-install --progress=false --no-audit --loglevel=e
 COPY priv priv
 COPY assets assets
 
-# NOTE: If using TailwindCSS, it uses a special "purge" step and that requires
-# the code in `lib` to see what is being used. Uncomment that here before
-# running the npm deploy script if that's the case.
-# COPY lib lib
+# NOTE: allow tailwindcss to purge / compile based on html code in lib
+COPY lib lib
 
 # build assets
 RUN mix assets.deploy
