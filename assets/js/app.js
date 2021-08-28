@@ -15,6 +15,11 @@
 //     import "some-package"
 //
 
+import Alpine from "alpinejs"
+
+window.Alpine = Alpine
+Alpine.start()
+
 // Include phoenix_html to handle method=PUT/DELETE in forms and buttons.
 import "phoenix_html"
 
@@ -28,6 +33,14 @@ let csrfToken = document
   .getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {
   params: { _csrf_token: csrfToken },
+  hooks: hooks,
+  dom: {
+    onBeforeElUpdated(from, to) {
+      if (from._x_dataStack) {
+        window.Alpine.clone(from, to)
+      }
+    },
+  },
 })
 
 // Show progress bar on live navigation and form submits
