@@ -41,14 +41,12 @@ Alpine.data("questionGenerator", (initial_html, design) => ({
   html: initial_html,
   design: design,
   init() {
-    return () => {
-      this.$refs.design_preview.previewHTML = this.design
-      this.$refs.solution_preview.previewHTML = this.html
+    this.$refs.design_preview.previewHTML = this.design
+    this.$refs.solution_preview.previewHTML = this.html
 
-      this.$watch("html", (value) => {
-        this.$refs.solution_preview.previewHTML = this.html
-      })
-    }
+    this.$watch("html", (value) => {
+      this.$refs.solution_preview.previewHTML = this.html
+    })
   },
   resetFlash() {
     this.flash = default_flash
