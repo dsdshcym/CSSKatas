@@ -25,11 +25,8 @@ ENV SECRET_KEY_BASE=nokey
 COPY mix.exs mix.lock ./
 COPY config config
 
-RUN mix deps.get --only prod && \
-    mix deps.compile
-
 COPY assets assets
-RUN npm --prefix ./assets clean-install --progress=false --no-audit --loglevel=error
+RUN mix setup
 
 COPY priv priv
 
