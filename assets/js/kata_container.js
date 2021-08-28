@@ -1,6 +1,6 @@
 import domtoimage from "dom-to-image"
 
-export default (initial_html, design) => ({
+let build = (initial_html, design) => ({
   flash: "",
   html: initial_html,
   design: design,
@@ -57,3 +57,5 @@ export default (initial_html, design) => ({
     )
   },
 })
+
+export default { build }

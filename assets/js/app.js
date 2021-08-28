@@ -35,7 +35,7 @@ customElements.define(
 )
 
 import kataContainer from "./kata_container.js"
-Alpine.data("kataContainer", kataContainer)
+Alpine.data("kataContainer", kataContainer.build)
 
 Alpine.start()
 
