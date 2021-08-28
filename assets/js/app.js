@@ -19,8 +19,6 @@ import Alpine from "alpinejs"
 
 window.Alpine = Alpine
 
-import domtoimage from "dom-to-image"
-
 customElements.define(
   "preview-container",
   class extends HTMLElement {

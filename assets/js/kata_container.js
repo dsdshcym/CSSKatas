@@ -1,3 +1,5 @@
+import domtoimage from "dom-to-image"
+
 export default (initial_html, design) => ({
   flash: "",
   html: initial_html,
