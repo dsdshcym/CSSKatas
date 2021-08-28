@@ -5,6 +5,6 @@
     "tailwindcss": "^2.2.7"
   },
   "scripts": {
-    "deploy": "NODE_ENV=production tailwindcss --postcss -i css/app.css -o ../priv/static/assets/app.css"
+    "deploy": "NODE_ENV=production tailwindcss --postcss --minify -i css/app.css -o ../priv/static/assets/app.css"
   }
 }
