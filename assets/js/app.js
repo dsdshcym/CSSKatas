@@ -18,6 +18,87 @@
 import Alpine from "alpinejs"
 
 window.Alpine = Alpine
+
+import domtoimage from "dom-to-image"
+
+customElements.define(
+  "preview-container",
+  class extends HTMLElement {
+    set previewHTML(html) {
+      this.shadowRoot.getElementById("preview").innerHTML = html
+    }
+    constructor() {
+      super()
+
+      const shadowRoot = this.attachShadow({ mode: "open" })
+      shadowRoot.innerHTML = `<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> <div id="preview"></div>`
+    }
+  }
+)
+
+window.questionGenerator = function (initial_html, design) {
+  let default_flash = ""
+  return {
+    flash: default_flash,
+    html: initial_html,
+    design: design,
+    init() {
+      return () => {
+        this.$refs.design_preview.previewHTML = this.design
+        this.$refs.solution_preview.previewHTML = this.html
+
+        this.$watch("html", (value) => {
+          this.$refs.solution_preview.previewHTML = this.html
+        })
+      }
+    },
+    resetFlash() {
+      this.flash = default_flash
+    },
+    reset() {
+      this.resetFlash()
+      this.html = initial_html
+    },
+    toPixelData(dom) {
+      var scale = 2
+      return domtoimage.toPixelData(dom, {
+        width: dom.clientWidth * scale,
+        height: dom.clientHeight * scale,
+        style: {
+          transform: `scale(${scale})`,
+          transformOrigin: "top left",
+        },
+      })
+    },
+    diff(dom1, dom2, successFn, failureFn) {
+      let $this = this
+      $this.toPixelData(dom1).then(function (domPixels1) {
+        $this.toPixelData(dom2).then(function (domPixels2) {
+          if (JSON.stringify(domPixels1) == JSON.stringify(domPixels2)) {
+            successFn()
+          } else {
+            failureFn()
+          }
+        })
+      })
+    },
+    check(dispatchFn) {
+      var target = this.$refs.design_preview
+      var work = this.$refs.solution_preview
+      this.diff(
+        target,
+        work,
+        () => {
+          this.flash = "success"
+        },
+        () => {
+          this.flash = "Oops, Preview doesn't match the Design."
+        }
+      )
+    },
+  }
+}
+
 Alpine.start()
 
 // Include phoenix_html to handle method=PUT/DELETE in forms and buttons.

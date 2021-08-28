@@ -1,0 +1,74 @@
+<div
+  x-data="questionGenerator(`<%= @kata.initial_html %>`, `<%= @kata.design %>`)"
+  x-init="init()"
+  class="flex flex-col h-screen divide-y"
+>
+  <div
+    class="flex flex-col justify-end space-y-2 md:flex-row md:items-baseline md:space-x-4"
+  >
+    <p
+      x-show="flash"
+      x-text="flash"
+      class="flex-1 px-2 py-2 text-gray-700 text-sm bg-gray-100 border-l-4 border-red-500"
+    ></p>
+
+    <div class="flex space-x-2">
+      <button
+        x-on:click="check($dispatch)"
+        class="px-4 py-2 text-white hover:bg-indigo-500 bg-indigo-600 rounded transition duration-150 ease-in-out"
+      >
+        Check
+      </button>
+      <button
+        x-on:click="reset()"
+        class="px-4 py-2 text-white hover:bg-red-500 bg-red-600 rounded transition duration-150 ease-in-out"
+      >
+        Reset
+      </button>
+    </div>
+  </div>
+
+  <div class="grid flex-1 grid-cols-2 grid-rows-2">
+    <div class="px-4 py-4 space-y-2">
+      <h2 class="text-lg font-medium tracking-tight leading-5">
+        <%= @kata.title %>
+      </h2>
+      <div class="max-w-2xl text-gray-500 text-sm italic">
+        <%= raw(@kata.instruction) %>
+      </div>
+    </div>
+
+    <div class="flex-1 px-4 py-2 border-l">
+      <label for="design_preview">Design:</label>
+      <div class="flex justify-center">
+        <preview-container
+          x-ref="design_preview"
+          class="px-4 py-4"
+        ></preview-container>
+      </div>
+    </div>
+
+    <div class="border-t rounded overflow-hidden">
+      <textarea
+        id="solution_html"
+        name="solution[html]"
+        x-model="html"
+        x-on:keydown="resetFlash()"
+        rows="5"
+        class="p-2 w-full h-full text-gray-100 font-mono bg-gray-800 resize-none"
+      >
+        <%= @kata.initial_html %>
+      </textarea>
+    </div>
+
+    <div class="flex-1 px-4 py-2 border-l border-t">
+      <label for="solution_preview">Preview:</label>
+      <div class="flex justify-center">
+        <preview-container
+          x-ref="solution_preview"
+          class="px-4 py-4"
+        ></preview-container>
+      </div>
+    </div>
+  </div>
+</div>
