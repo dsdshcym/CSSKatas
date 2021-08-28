@@ -6,5 +6,8 @@
   },
   "scripts": {
     "deploy": "NODE_ENV=production tailwindcss --postcss --minify -i css/app.css -o ../priv/static/assets/app.css"
+  },
+  "dependencies": {
+    "alpinejs": "^3.2.4"
   }
 }
