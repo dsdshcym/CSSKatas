@@ -33,6 +33,7 @@ defmodule CSSKatas.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:wallaby, "~> 0.28.0", runtime: false, only: :test},
       {:phoenix, "~> 1.6.0-rc.0", override: true},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
