@@ -28,11 +28,10 @@ COPY config config
 RUN mix deps.get --only prod && \
     mix deps.compile
 
-COPY assets/package.json assets/package-lock.json ./assets/
+COPY assets assets
 RUN npm --prefix ./assets clean-install --progress=false --no-audit --loglevel=error
 
 COPY priv priv
-COPY assets assets
 
 # NOTE: allow tailwindcss to purge / compile based on html code in lib
 COPY lib lib
