@@ -1,5 +1,22 @@
 import domtoimage from "dom-to-image"
 
+let preflight = () => {
+  customElements.define(
+    "preview-container",
+    class extends HTMLElement {
+      set previewHTML(html) {
+        this.shadowRoot.getElementById("preview").innerHTML = html
+      }
+      constructor() {
+        super()
+
+        const shadowRoot = this.attachShadow({ mode: "open" })
+        shadowRoot.innerHTML = `<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> <div id="preview"></div>`
+      }
+    }
+  )
+}
+
 let build = (initial_html, design) => ({
   flash: "",
   html: initial_html,
@@ -58,4 +75,4 @@ let build = (initial_html, design) => ({
   },
 })
 
-export default { build }
+export default { preflight, build }
