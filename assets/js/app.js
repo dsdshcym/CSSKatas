@@ -36,7 +36,7 @@ customElements.define(
   }
 )
 
-Alpine.data("questionGenerator", (initial_html, design) => ({
+Alpine.data("kataContainer", (initial_html, design) => ({
   flash: "",
   html: initial_html,
   design: design,

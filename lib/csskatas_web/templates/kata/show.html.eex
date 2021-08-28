@@ -1,5 +1,5 @@
 <div
-  x-data="questionGenerator(`<%= @kata.initial_html %>`, `<%= @kata.design %>`)"
+  x-data="kataContainer(`<%= @kata.initial_html %>`, `<%= @kata.design %>`)"
   class="flex flex-col h-screen divide-y"
 >
   <div
