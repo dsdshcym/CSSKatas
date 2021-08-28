@@ -18,6 +18,11 @@ defmodule CSSKatasWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
+
+    resources "/katas", KataController,
+      only: [
+        :show
+      ]
   end
 
   # Other scopes may use custom stacks.
