@@ -33,7 +33,6 @@ let csrfToken = document
   .getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {
   params: { _csrf_token: csrfToken },
-  hooks: hooks,
   dom: {
     onBeforeElUpdated(from, to) {
       if (from._x_dataStack) {
