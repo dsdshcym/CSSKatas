@@ -36,68 +36,65 @@ customElements.define(
   }
 )
 
-window.questionGenerator = function (initial_html, design) {
-  let default_flash = ""
-  return {
-    flash: default_flash,
-    html: initial_html,
-    design: design,
-    init() {
-      return () => {
-        this.$refs.design_preview.previewHTML = this.design
-        this.$refs.solution_preview.previewHTML = this.html
+Alpine.data("questionGenerator", (initial_html, design) => ({
+  flash: "",
+  html: initial_html,
+  design: design,
+  init() {
+    return () => {
+      this.$refs.design_preview.previewHTML = this.design
+      this.$refs.solution_preview.previewHTML = this.html
 
-        this.$watch("html", (value) => {
-          this.$refs.solution_preview.previewHTML = this.html
-        })
-      }
-    },
-    resetFlash() {
-      this.flash = default_flash
-    },
-    reset() {
-      this.resetFlash()
-      this.html = initial_html
-    },
-    toPixelData(dom) {
-      var scale = 2
-      return domtoimage.toPixelData(dom, {
-        width: dom.clientWidth * scale,
-        height: dom.clientHeight * scale,
-        style: {
-          transform: `scale(${scale})`,
-          transformOrigin: "top left",
-        },
+      this.$watch("html", (value) => {
+        this.$refs.solution_preview.previewHTML = this.html
       })
-    },
-    diff(dom1, dom2, successFn, failureFn) {
-      let $this = this
-      $this.toPixelData(dom1).then(function (domPixels1) {
-        $this.toPixelData(dom2).then(function (domPixels2) {
-          if (JSON.stringify(domPixels1) == JSON.stringify(domPixels2)) {
-            successFn()
-          } else {
-            failureFn()
-          }
-        })
-      })
-    },
-    check(dispatchFn) {
-      var target = this.$refs.design_preview
-      var work = this.$refs.solution_preview
-      this.diff(
-        target,
-        work,
-        () => {
-          this.flash = "success"
-        },
-        () => {
-          this.flash = "Oops, Preview doesn't match the Design."
+    }
+  },
+  resetFlash() {
+    this.flash = default_flash
+  },
+  reset() {
+    this.resetFlash()
+    this.html = initial_html
+  },
+  toPixelData(dom) {
+    var scale = 2
+    return domtoimage.toPixelData(dom, {
+      width: dom.clientWidth * scale,
+      height: dom.clientHeight * scale,
+      style: {
+        transform: `scale(${scale})`,
+        transformOrigin: "top left",
+      },
+    })
+  },
+  diff(dom1, dom2, successFn, failureFn) {
+    let $this = this
+    $this.toPixelData(dom1).then(function (domPixels1) {
+      $this.toPixelData(dom2).then(function (domPixels2) {
+        if (JSON.stringify(domPixels1) == JSON.stringify(domPixels2)) {
+          successFn()
+        } else {
+          failureFn()
         }
-      )
-    },
-  }
-}
+      })
+    })
+  },
+  check(dispatchFn) {
+    var target = this.$refs.design_preview
+    var work = this.$refs.solution_preview
+    this.diff(
+      target,
+      work,
+      () => {
+        this.flash = "success"
+      },
+      () => {
+        this.flash = "Oops, Preview doesn't match the Design."
+      }
+    )
+  },
+}))
 
 Alpine.start()
 
