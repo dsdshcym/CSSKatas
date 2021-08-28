@@ -25,10 +25,11 @@ ENV SECRET_KEY_BASE=nokey
 COPY mix.exs mix.lock ./
 COPY config config
 
-COPY assets assets
+COPY assets/package.json assets/package-lock.json ./assets/
 RUN mix setup
 
 COPY priv priv
+COPY assets assets
 
 # NOTE: allow tailwindcss to purge / compile based on html code in lib
 COPY lib lib
