@@ -12,7 +12,7 @@ defmodule CSSKatasWeb.Features.KataTest do
 
     # Reads instruction and initial solution
     |> assert_has(css("p", text: "This is how padding works in Tailwind CSS"))
-    |> read(:initial_solution, "<button class=\"border rounded\">Submit</button>")
+    |> assert_filled_solution("<button class=\"border rounded\">Submit</button>")
 
     # Checks solution that is not a match
     |> execute_script(
@@ -31,7 +31,7 @@ defmodule CSSKatasWeb.Features.KataTest do
     |> assert_has(css("p", text: "success"))
   end
 
-  defp read(session, :initial_solution, text) do
+  defp assert_filled_solution(session, text) do
     session
     |> execute_script("return window.editor_view.state.doc.toString()", [], fn result ->
       assert result =~ text
