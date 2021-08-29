@@ -20,6 +20,7 @@ defmodule CSSKatasWeb.Router do
     live "/", PageLive, :index
 
     resources "/katas", KataController,
+      param: "slug",
       only: [
         :show
       ]
