@@ -15,18 +15,12 @@ defmodule CSSKatasWeb.Features.KataTest do
     |> assert_filled_solution("<button class=\"border rounded\">Submit</button>")
 
     # Checks solution that is not a match
-    |> execute_script(
-      "window.editor_view.dispatch({changes: {from: 0, to: window.editor_view.state.doc.length, insert: arguments[0]}})",
-      ["<button class=\"border rounded px-4\">Submit</button>"]
-    )
+    |> fill_solution("<button class=\"border rounded px-4\">Submit</button>")
     |> click(button("Check"))
     |> assert_has(css("p", text: "Oops, Preview doesn't match the Design"))
 
     # Checks solution that is a match
-    |> execute_script(
-      "window.editor_view.dispatch({changes: {from: 0, to: window.editor_view.state.doc.length, insert: arguments[0]}})",
-      ["<button class=\"border rounded px-4 py-2\">Submit</button>"]
-    )
+    |> fill_solution("<button class=\"border rounded px-4 py-2\">Submit</button>")
     |> click(button("Check"))
     |> assert_has(css("p", text: "success"))
   end
@@ -36,5 +30,13 @@ defmodule CSSKatasWeb.Features.KataTest do
     |> execute_script("return window.editor_view.state.doc.toString()", [], fn result ->
       assert result =~ text
     end)
+  end
+
+  defp fill_solution(session, text) do
+    session
+    |> execute_script(
+      "window.editor_view.dispatch({changes: {from: 0, to: window.editor_view.state.doc.length, insert: arguments[0]}})",
+      [text]
+    )
   end
 end
