@@ -7,14 +7,21 @@ defmodule CSSKatas do
   if it comes from the database, an external API or others.
   """
 
-  katas =
+  kata_paths =
     "../katas"
     |> Path.expand(__DIR__)
     |> Path.join("*")
     |> Path.wildcard()
-    |> Enum.map(fn path ->
-      @external_resource path
 
+  for kata_path <- kata_paths do
+    for file_path <- kata_path |> Path.join("*") |> Path.wildcard() do
+      @external_resource file_path
+    end
+  end
+
+  katas =
+    kata_paths
+    |> Enum.map(fn path ->
       CSSKatas.Kata.load_from_local(path)
     end)
 
