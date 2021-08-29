@@ -4,11 +4,7 @@ defmodule CSSKatas.Kata do
       slug: Path.basename(path),
       initial_html: path |> read!("initial.html"),
       design: path |> read!("design.html"),
-      title:
-        path
-        |> read!("metadata.json")
-        |> Jason.decode!()
-        |> Map.fetch!("title"),
+      title: path |> read!("metadata.json") |> Jason.decode!() |> Map.fetch!("title"),
       instruction: path |> read!("instruction.html")
     }
   end
