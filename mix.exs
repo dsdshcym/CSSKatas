@@ -37,6 +37,7 @@ defmodule CSSKatas.MixProject do
       {:opentelemetry_api, "~> 1.0.0-rc", override: true},
       {:opentelemetry_honeycomb, "~> 0.5.0-rc.1"},
       {:opentelemetry_phoenix, "~> 1.0.0-rc"},
+      {:opentelemetry_liveview, "~> 1.0.0-rc"},
       {:hackney, ">= 1.11.0"},
       {:poison, ">= 1.5.0"},
       {:wallaby, "~> 0.28.0", runtime: false, only: :test},
