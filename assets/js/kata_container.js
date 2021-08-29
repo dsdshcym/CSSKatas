@@ -30,7 +30,7 @@ let build = (initial_html, design) => ({
     })
   },
   resetFlash() {
-    this.flash = default_flash
+    this.flash = ""
   },
   reset() {
     this.resetFlash()
