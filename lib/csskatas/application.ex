@@ -8,6 +8,7 @@ defmodule CSSKatas.Application do
   @impl true
   def start(_type, _args) do
     :ok = OpentelemetryPhoenix.setup()
+    :ok = OpentelemetryLiveView.setup()
 
     children = [
       # Start the Telemetry supervisor
