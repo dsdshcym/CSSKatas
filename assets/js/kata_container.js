@@ -1,4 +1,5 @@
 import domtoimage from "dom-to-image"
+import { EditorState, EditorView, basicSetup } from "@codemirror/basic-setup"
 
 let preflight = () => {
   customElements.define(
@@ -27,6 +28,21 @@ let build = (initial_html, design) => ({
 
     this.$watch("html", (value) => {
       this.$refs.solution_preview.previewHTML = this.html
+    })
+
+    this.view = new EditorView({
+      state: EditorState.create({
+        doc: initial_html,
+        extensions: [
+          basicSetup,
+          EditorView.updateListener.of((update) => {
+            if (update.docChanged) {
+              this.html = update.state.doc.toString()
+            }
+          }),
+        ],
+      }),
+      parent: document.querySelector("#editor"),
     })
   },
   resetFlash() {

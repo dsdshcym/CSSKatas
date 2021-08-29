@@ -47,18 +47,7 @@
       </div>
     </div>
 
-    <div class="border-t rounded overflow-hidden">
-      <textarea
-        id="solution_html"
-        name="solution[html]"
-        x-model="html"
-        x-on:keydown="resetFlash()"
-        rows="5"
-        class="p-2 w-full h-full text-gray-100 font-mono bg-gray-800 resize-none"
-      >
-        <%= @kata.initial_html %>
-      </textarea>
-    </div>
+    <div id="editor" class="border-t rounded overflow-hidden"></div>
 
     <div class="flex-1 px-4 py-2 border-l border-t">
       <label for="solution_preview">Preview:</label>
