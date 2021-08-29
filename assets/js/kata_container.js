@@ -1,5 +1,6 @@
 import domtoimage from "dom-to-image"
 import { EditorState, EditorView, basicSetup } from "@codemirror/basic-setup"
+import { html } from "@codemirror/lang-html"
 
 let preflight = () => {
   customElements.define(
@@ -35,6 +36,7 @@ let build = (initial_html, design) => ({
         doc: initial_html,
         extensions: [
           basicSetup,
+          html(),
           EditorView.updateListener.of((update) => {
             if (update.docChanged) {
               this.html = update.state.doc.toString()
