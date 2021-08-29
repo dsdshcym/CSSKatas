@@ -12,18 +12,22 @@ defmodule CSSKatasWeb.Features.KataTest do
 
     # Reads instruction and initial solution
     |> assert_has(css("p", text: "This is how padding works in Tailwind CSS"))
-    |> assert_has(css("textarea", text: "<button class=\"border rounded\">Submit</button>"))
+    |> execute_script("return window.editor_view.state.doc.toString()", [], fn result ->
+      assert result =~ "<button class=\"border rounded\">Submit</button>"
+    end)
 
     # Checks solution that is not a match
-    |> fill_in(text_field("solution[html]"),
-      with: "<button class=\"border rounded px-4\">Submit</button>"
+    |> execute_script(
+      "window.editor_view.dispatch({changes: {from: 0, to: window.editor_view.state.doc.length, insert: arguments[0]}})",
+      ["<button class=\"border rounded px-4\">Submit</button>"]
     )
     |> click(button("Check"))
     |> assert_has(css("p", text: "Oops, Preview doesn't match the Design"))
 
     # Checks solution that is a match
-    |> fill_in(text_field("solution[html]"),
-      with: "<button class=\"border rounded px-4 py-2\">Submit</button>"
+    |> execute_script(
+      "window.editor_view.dispatch({changes: {from: 0, to: window.editor_view.state.doc.length, insert: arguments[0]}})",
+      ["<button class=\"border rounded px-4 py-2\">Submit</button>"]
     )
     |> click(button("Check"))
     |> assert_has(css("p", text: "success"))
