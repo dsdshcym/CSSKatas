@@ -33,6 +33,11 @@ defmodule CSSKatas.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:opentelemetry, "~> 0.5.0"},
+      {:opentelemetry_api, "~> 0.5.0"},
+      {:opentelemetry_honeycomb, "~> 0.5.0-rc.1"},
+      {:hackney, ">= 1.11.0"},
+      {:poison, ">= 1.5.0"},
       {:wallaby, "~> 0.28.0", runtime: false, only: :test},
       {:phoenix, "~> 1.6.0-rc.0", override: true},
       {:phoenix_html, "~> 3.0"},
