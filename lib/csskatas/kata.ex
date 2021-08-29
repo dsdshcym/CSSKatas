@@ -17,5 +17,6 @@ defmodule CSSKatas.Kata do
     dir
     |> Path.join(file)
     |> File.read!()
+    |> String.trim()
   end
 end
