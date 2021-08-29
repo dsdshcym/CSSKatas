@@ -8,11 +8,18 @@ defmodule CSSKatas do
   """
 
   def get_kata("button-with-paddings") do
+    path = Path.expand("../katas/button-with-paddings", __DIR__)
+
     kata = %{
-      initial_html: ~s{<button class="border rounded">Submit</button>},
-      design: ~s{<button class="border rounded px-4 py-2">Submit</button>},
-      title: ~s{Tailwind CSS 101 - Paddings},
-      instruction: ~s{<p>This is how padding works in Tailwind CSS</p>}
+      initial_html: path |> Path.join("initial.html") |> File.read!(),
+      design: path |> Path.join("design.html") |> File.read!(),
+      title:
+        path
+        |> Path.join("metadata.json")
+        |> File.read!()
+        |> Jason.decode!()
+        |> Map.fetch!("title"),
+      instruction: path |> Path.join("instruction.html") |> File.read!()
     }
 
     {:ok, kata}
