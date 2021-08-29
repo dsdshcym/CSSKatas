@@ -42,7 +42,7 @@
       <div class="flex justify-center">
         <preview-container
           x-ref="design_preview"
-          class="px-4 py-4"
+          class="flex-1 px-4 py-4"
         ></preview-container>
       </div>
     </div>
@@ -54,7 +54,7 @@
       <div class="flex justify-center">
         <preview-container
           x-ref="solution_preview"
-          class="px-4 py-4"
+          class="flex-1 px-4 py-4"
         ></preview-container>
       </div>
     </div>
