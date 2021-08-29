@@ -57,7 +57,8 @@ config :csskatas, CSSKatasWeb.Endpoint,
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/csskatas_web/(live|views)/.*(ex)$",
-      ~r"lib/csskatas_web/templates/.*(eex)$"
+      ~r"lib/csskatas_web/templates/.*(eex)$",
+      ~r"katas/.*"
     ]
   ]
 
