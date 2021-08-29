@@ -25,6 +25,9 @@ ENV SECRET_KEY_BASE=nokey
 COPY mix.exs mix.lock ./
 COPY config config
 
+# copy katas folder to seed data
+COPY katas katas
+
 COPY assets/package.json assets/package-lock.json ./assets/
 RUN mix setup
 
@@ -36,9 +39,6 @@ COPY lib lib
 
 # build assets
 RUN mix assets.deploy
-
-# copy katas folder to seed data
-COPY katas katas
 
 # compile and build release
 COPY rel rel
