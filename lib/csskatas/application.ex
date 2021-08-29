@@ -7,6 +7,8 @@ defmodule CSSKatas.Application do
 
   @impl true
   def start(_type, _args) do
+    :ok = OpentelemetryPhoenix.setup()
+
     children = [
       # Start the Telemetry supervisor
       CSSKatasWeb.Telemetry,
