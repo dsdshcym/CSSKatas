@@ -7,11 +7,20 @@ defmodule CSSKatas do
   if it comes from the database, an external API or others.
   """
 
-  def get_kata("button-with-paddings") do
-    path = Path.expand("../katas/button-with-paddings", __DIR__)
+  katas =
+    "../katas"
+    |> Path.expand(__DIR__)
+    |> Path.join("*")
+    |> Path.wildcard()
+    |> Enum.map(fn path ->
+      @external_resource path
 
-    kata = CSSKatas.Kata.load_from_local(path)
+      CSSKatas.Kata.load_from_local(path)
+    end)
 
-    {:ok, kata}
+  for kata <- katas do
+    def get_kata(unquote(kata.slug)) do
+      {:ok, unquote(Macro.escape(kata))}
+    end
   end
 end
