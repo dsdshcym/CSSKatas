@@ -11,6 +11,7 @@
     "deploy": "NODE_ENV=production tailwindcss --postcss --minify -i css/app.css -o ../priv/static/assets/app.css"
   },
   "dependencies": {
+    "@codemirror/basic-setup": "^0.19.0",
     "alpinejs": "^3.2.4",
     "dom-to-image": "github:VernierST/dom-to-image"
   }
