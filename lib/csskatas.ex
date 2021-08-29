@@ -10,22 +10,8 @@ defmodule CSSKatas do
   def get_kata("button-with-paddings") do
     path = Path.expand("../katas/button-with-paddings", __DIR__)
 
-    kata = load_kata(path)
+    kata = CSSKatas.Kata.load_from_local(path)
 
     {:ok, kata}
-  end
-
-  defp load_kata(path) do
-    %{
-      initial_html: path |> Path.join("initial.html") |> File.read!(),
-      design: path |> Path.join("design.html") |> File.read!(),
-      title:
-        path
-        |> Path.join("metadata.json")
-        |> File.read!()
-        |> Jason.decode!()
-        |> Map.fetch!("title"),
-      instruction: path |> Path.join("instruction.html") |> File.read!()
-    }
   end
 end
