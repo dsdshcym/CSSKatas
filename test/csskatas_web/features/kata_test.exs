@@ -12,15 +12,15 @@ defmodule CSSKatasWeb.Features.KataTest do
 
     # Reads instruction and initial solution
     |> assert_has(css("p", text: "This is how padding works in Tailwind CSS"))
-    |> assert_filled_solution("<button class=\"border rounded\">Submit</button>")
+    |> assert_filled_solution(~s{<button class="border rounded">Submit</button>})
 
     # Checks solution that is not a match
-    |> fill_solution("<button class=\"border rounded px-4\">Submit</button>")
+    |> fill_solution(~s{<button class="border rounded px-4">Submit</button>})
     |> click(button("Check"))
     |> assert_has(css("p", text: "Oops, Preview doesn't match the Design"))
 
     # Checks solution that is a match
-    |> fill_solution("<button class=\"border rounded px-4 py-2\">Submit</button>")
+    |> fill_solution(~s{<button class="border rounded px-4 py-2">Submit</button>})
     |> click(button("Check"))
     |> assert_has(css("p", text: "success"))
   end
