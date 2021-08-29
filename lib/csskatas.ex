@@ -7,7 +7,7 @@ defmodule CSSKatas do
   if it comes from the database, an external API or others.
   """
 
-  def get_kata(id) do
+  def get_kata("button-with-paddings") do
     kata = %{
       initial_html: ~s{<button class="border rounded">Submit</button>},
       design: ~s{<button class="border rounded px-4 py-2">Submit</button>},
