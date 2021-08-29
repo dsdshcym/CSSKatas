@@ -31,7 +31,7 @@ let build = (initial_html, design) => ({
       this.$refs.solution_preview.previewHTML = this.html
     })
 
-    this.view = new EditorView({
+    window.editor_view = new EditorView({
       state: EditorState.create({
         doc: initial_html,
         extensions: [
