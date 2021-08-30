@@ -17,6 +17,8 @@ defmodule CSSKatasWeb.Router do
   scope "/", CSSKatasWeb do
     pipe_through :browser
 
+    get "/", HomeController, :show
+
     resources "/katas", KataController,
       param: "slug",
       only: [
