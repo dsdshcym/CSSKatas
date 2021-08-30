@@ -17,8 +17,6 @@ defmodule CSSKatasWeb.Router do
   scope "/", CSSKatasWeb do
     pipe_through :browser
 
-    live "/", PageLive, :index
-
     resources "/katas", KataController,
       param: "slug",
       only: [
