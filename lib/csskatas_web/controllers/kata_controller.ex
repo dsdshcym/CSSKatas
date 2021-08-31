@@ -5,6 +5,7 @@ defmodule CSSKatasWeb.KataController do
     {:ok, katas} = CSSKatas.get_katas()
 
     conn
+    |> assign(:page_title, "Katas")
     |> render(:index, katas: katas)
   end
 
