@@ -3,7 +3,7 @@
     <%= for kata <- @katas do %>
       <li>
         <%= link(to: CSSKatasWeb.Router.Helpers.kata_path(@conn, :show, kata.slug)) do %>
-          <div class="border-2 rounded shadow">
+          <div class="border-2 rounded shadow hover:shadow-xl transition">
             <div class="shadow-sm">
               <div class="h-72">
                 <div class="flex flex-col justify-between h-full divide-y-2">
