@@ -311,8 +311,9 @@
               CSS frameworks support
             </h4>
             <p class="mt-2 text-gray-500 text-base leading-6">
-              Want to learn a new CSS framework? No problem. We would add tracks
-              for your favorite frameworks. CSSKatas is your CSS playground.
+              Want to learn a new CSS framework? No problem. We would add more
+              tracks for different frameworks in the future.
+              <br />
 
               <span class="text-xs"
                 >(For now we only support
