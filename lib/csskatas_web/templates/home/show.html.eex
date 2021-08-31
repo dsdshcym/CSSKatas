@@ -75,10 +75,10 @@
               Demo
             </a>
             <a
-              href="#sign-up"
+              href="#newsletter"
               class="ml-8 text-indigo-600 hover:text-indigo-900 font-medium transition duration-150 ease-in-out"
             >
-              Sign-up
+              Newsletter
             </a>
           </div>
         </nav>
@@ -159,11 +159,11 @@
             </div>
             <div>
               <a
-                href="#sign-up"
+                href="#newsletter"
                 class="block px-5 py-3 w-full text-center text-indigo-600 hover:text-indigo-700 focus:text-indigo-700 font-medium hover:bg-gray-100 focus:bg-gray-100 bg-gray-50 focus:outline-none transition duration-150 ease-in-out"
                 role="menuitem"
               >
-                Sign-up
+                Newsletter
               </a>
             </div>
           </div>
@@ -190,10 +190,10 @@
           <div class="mt-5 sm:flex sm:justify-center sm:mt-8 lg:justify-start">
             <div class="rounded-md shadow">
               <a
-                href="#sign-up"
+                href="#newsletter"
                 class="focus:shadow-outline-indigo flex items-center justify-center px-8 py-3 w-full text-white text-base font-medium leading-6 hover:bg-indigo-500 bg-indigo-600 border focus:border-indigo-700 border-transparent rounded-md focus:outline-none transition duration-150 ease-in-out md:px-10 md:py-4 md:text-lg"
               >
-                Sign-up for Beta
+                Newsletter
               </a>
             </div>
             <div class="mt-3 sm:ml-3 sm:mt-0">
@@ -365,7 +365,7 @@
   </div>
 </div>
 
-<div class="mx-auto py-10 max-w-screen-xl bg-gray-800" id="sign-up">
+<div class="mx-auto py-10 max-w-screen-xl bg-gray-800" id="newsletter">
   <div
     class="flex flex-col px-4 md:flex-row md:items-center md:justify-between md:px-10 md:space-x-4"
   >
@@ -373,11 +373,11 @@
       <h3
         class="text-white text-2xl font-extrabold tracking-tight leading-8 sm:text-3xl sm:leading-none md:text-4xl"
       >
-        Sign up for early access
+        Sign up for our newsletter
       </h3>
       <p class="max-w-md text-gray-400">
-        Drop us your email and we'll send you an early invitaion as soon as
-        CSSKatas is ready.
+        Drop us your email and we'll send you a regular update for the new
+        katas.
       </p>
     </div>
     <div class="flex-1 pt-4 xl:pt-0">
