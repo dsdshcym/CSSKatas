@@ -221,7 +221,7 @@
 <div class="py-12 bg-white" id="features">
   <div class="mx-auto px-4 max-w-screen-xl sm:px-6 lg:px-8">
     <ul
-      class="md:col-gap-8 md:row-gap-10 space-y-10 md:grid md:grid-cols-2 md:space-y-0"
+      class="space-y-10 md:grid md:gap-x-10 md:gap-y-8 md:grid-cols-2 md:space-y-0"
     >
       <li>
         <div class="flex">
