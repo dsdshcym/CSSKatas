@@ -1,0 +1,7 @@
+<ul>
+  <%= for kata <- @katas do %>
+    <li>
+      <%= link(kata.title, to: CSSKatasWeb.Router.Helpers.kata_path(@conn, :show, kata.slug)) %>
+    </li>
+  <% end %>
+</ul>

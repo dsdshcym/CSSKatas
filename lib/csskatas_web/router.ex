@@ -22,6 +22,7 @@ defmodule CSSKatasWeb.Router do
     resources "/katas", KataController,
       param: "slug",
       only: [
+        :index,
         :show
       ]
   end
