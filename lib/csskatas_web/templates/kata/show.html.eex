@@ -39,20 +39,24 @@
 
     <div class="flex-1 px-4 py-2 border-l">
       <label for="design_preview">Design:</label>
-      <preview-container
-        x-ref="design_preview"
-        class="px-4 py-4"
-      ></preview-container>
+      <div class="flex justify-center">
+        <preview-container
+          x-ref="design_preview"
+          class="flex-1 px-4 py-4"
+        ></preview-container>
+      </div>
     </div>
 
     <div id="editor" class="border-t rounded overflow-hidden"></div>
 
     <div class="flex-1 px-4 py-2 border-l border-t">
       <label for="solution_preview">Preview:</label>
-      <preview-container
-        x-ref="solution_preview"
-        class="px-4 py-4"
-      ></preview-container>
+      <div class="flex justify-center">
+        <preview-container
+          x-ref="solution_preview"
+          class="flex-1 px-4 py-4"
+        ></preview-container>
+      </div>
     </div>
   </div>
 </div>
