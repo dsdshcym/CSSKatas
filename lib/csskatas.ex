@@ -25,6 +25,10 @@ defmodule CSSKatas do
       CSSKatas.Kata.load_from_local(path)
     end)
 
+  def get_katas() do
+    {:ok, unquote(Macro.escape(katas))}
+  end
+
   for kata <- katas do
     def get_kata(unquote(kata.slug)) do
       {:ok, unquote(Macro.escape(kata))}
