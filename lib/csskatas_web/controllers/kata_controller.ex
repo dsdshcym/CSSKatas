@@ -14,6 +14,7 @@ defmodule CSSKatasWeb.KataController do
     {:ok, kata} = CSSKatas.get_kata(params["slug"])
 
     conn
+    |> assign(:page_title, kata.title)
     |> render(:show, kata: kata)
   end
 end
