@@ -24,6 +24,7 @@ defmodule CSSKatas do
     |> Enum.map(fn path ->
       CSSKatas.Kata.load_from_local(path)
     end)
+    |> Enum.sort_by(& &1.position)
 
   def get_katas() do
     {:ok, unquote(Macro.escape(katas))}
