@@ -179,8 +179,12 @@
           <p
             class="mt-3 text-gray-500 text-base sm:mt-5 sm:mx-auto sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0"
           >
-            Improve your CSS skills by implementing real designs. CSSKatas will
-            provide immediate feedback for your solutions.
+            Improve your CSS skills by implementing
+            <span class="text-red-500 font-bold">real designs</span>,
+            <br />
+            with
+            <span class="text-red-500 font-bold">immediate feedback</span> right
+            in your browser.
           </p>
           <div class="mt-5 sm:flex sm:justify-center sm:mt-8 lg:justify-start">
             <div class="rounded-md shadow">
