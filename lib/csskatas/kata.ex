@@ -4,6 +4,7 @@ defmodule CSSKatas.Kata do
 
     %{
       title: metadata.title,
+      position: metadata.position,
       slug: Path.basename(path),
       initial_html: path |> read!("initial.html"),
       design: path |> read!("design.html"),
