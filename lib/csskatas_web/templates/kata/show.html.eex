@@ -33,6 +33,7 @@
   >
     <p
       x-show="flash"
+      x-cloak
       x-text="flash"
       class="flex-1 px-2 py-2 text-gray-700 text-sm bg-gray-100 border-l-4 border-red-500"
     ></p>
