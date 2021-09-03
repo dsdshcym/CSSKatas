@@ -1,7 +1,31 @@
 <div
   x-data="kataContainer(`<%= @kata.initial_html %>`, `<%= @kata.design %>`)"
-  class="flex flex-col h-screen divide-y"
+  class="relative flex flex-col h-screen divide-y"
 >
+  <div
+    class="absolute z-50 bottom-0 left-0 right-0 top-0 flex items-center justify-center bg-gray-700 bg-opacity-70"
+  >
+    <div class="p-8 bg-white rounded-lg space-y-8">
+      <div class="space-y-2">
+        <h3 class="text-2xl font-medium tracking-tight">Congratulations 💯</h3>
+        <p class="pr-4 text-gray-600 text-base italic leading-tight">
+          Your solution matches the design perfectly!
+          <br />
+          Now you can pick your next challenge.
+        </p>
+      </div>
+
+      <div class="flex justify-end">
+        <%= link(to: CSSKatasWeb.Router.Helpers.kata_path(@conn, :index)) do %>
+          <button
+            class="px-4 py-2 text-white hover:bg-indigo-500 bg-indigo-600 rounded transition duration-150 ease-in-out"
+          >
+            Pick next Kata
+          </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <div
     class="flex flex-col justify-end space-y-2 md:flex-row md:items-baseline md:space-x-4"
   >
