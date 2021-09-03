@@ -21,6 +21,7 @@ let preflight = () => {
 
 let build = (initial_html, design) => ({
   flash: "",
+  congrat: false,
   html: initial_html,
   design: design,
   init() {
@@ -84,6 +85,7 @@ let build = (initial_html, design) => ({
       target,
       work,
       () => {
+        this.congrat = true
         this.flash = "success"
       },
       () => {

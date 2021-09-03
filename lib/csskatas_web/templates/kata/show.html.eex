@@ -3,6 +3,7 @@
   class="relative flex flex-col h-screen divide-y"
 >
   <div
+    x-show="congrat"
     class="absolute z-50 bottom-0 left-0 right-0 top-0 flex items-center justify-center bg-gray-700 bg-opacity-70"
   >
     <div class="p-8 bg-white rounded-lg space-y-8">
