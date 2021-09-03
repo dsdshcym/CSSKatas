@@ -22,7 +22,7 @@ defmodule CSSKatasWeb.Features.KataTest do
     # Checks solution that is a match
     |> fill_solution(~s{<button class="border rounded px-4 py-2">Submit</button>})
     |> click(button("Check"))
-    |> assert_has(css("p", text: "success"))
+    |> assert_show_congrat_message()
   end
 
   defp assert_filled_solution(session, text) do
@@ -38,5 +38,10 @@ defmodule CSSKatasWeb.Features.KataTest do
       "window.editor_view.dispatch({changes: {from: 0, to: window.editor_view.state.doc.length, insert: arguments[0]}})",
       [text]
     )
+  end
+
+  defp assert_show_congrat_message(session) do
+    session
+    |> assert_has(css("p", text: "success"))
   end
 end
