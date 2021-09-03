@@ -42,7 +42,6 @@ defmodule CSSKatasWeb.Features.KataTest do
 
   defp assert_show_congrat_message(session) do
     session
-    |> assert_has(css("p", text: "success"))
     |> assert_has(css("h3", text: "Congratulations"))
   end
 end

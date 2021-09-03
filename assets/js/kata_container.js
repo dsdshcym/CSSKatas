@@ -86,7 +86,6 @@ let build = (initial_html, design) => ({
       work,
       () => {
         this.congrat = true
-        this.flash = "success"
       },
       () => {
         this.flash = "Oops, Preview doesn't match the Design."
