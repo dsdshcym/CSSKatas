@@ -69,8 +69,8 @@ let build = (initial_html, design) => ({
   },
   diff(dom1, dom2, successFn, failureFn) {
     let $this = this
-    $this.toPixelData(dom1).then(function (domPixels1) {
-      $this.toPixelData(dom2).then(function (domPixels2) {
+    $this.toPixelData(dom1).then(function(domPixels1) {
+      $this.toPixelData(dom2).then(function(domPixels2) {
         if (JSON.stringify(domPixels1) == JSON.stringify(domPixels2)) {
           successFn()
         } else {
