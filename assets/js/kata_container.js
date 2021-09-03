@@ -1,6 +1,7 @@
 import domtoimage from "dom-to-image"
 import { EditorState, EditorView, basicSetup } from "@codemirror/basic-setup"
 import { html } from "@codemirror/lang-html"
+import confetti from "canvas-confetti"
 
 let preflight = () => {
   customElements.define(
@@ -86,6 +87,7 @@ let build = (initial_html, design) => ({
       work,
       () => {
         this.congrat = true
+        confetti()
       },
       () => {
         this.flash = "Oops, Preview doesn't match the Design."
