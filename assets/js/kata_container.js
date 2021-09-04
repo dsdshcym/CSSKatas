@@ -71,7 +71,10 @@ let build = (initial_html, design) => ({
   displayError() {
     this.error = true
 
-    setTimeout(() => this.resetError(), 3000)
+    if (this.timeout) {
+      clearTimeout(this.timeout)
+    }
+    this.timeout = setTimeout(() => this.resetError(), 3000)
   },
   toPixelData(dom) {
     var scale = 2
