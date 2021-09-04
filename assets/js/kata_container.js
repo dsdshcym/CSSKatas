@@ -31,7 +31,7 @@ let build = (initial_html, design) => ({
     this.$refs.solution_preview.previewHTML = this.html
 
     this.$watch("html", (value) => {
-      this.$refs.solution_preview.previewHTML = this.html
+      this.$refs.solution_preview.previewHTML = value
     })
 
     window.editor_view = new EditorView({
