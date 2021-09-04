@@ -53,9 +53,12 @@ let build = (initial_html, design) => ({
   resetFlash() {
     this.flash = ""
   },
+  resetSolution() {
+    this.html = initial_html
+  },
   reset() {
     this.resetFlash()
-    this.html = initial_html
+    this.resetSolution()
   },
   toPixelData(dom) {
     var scale = 2
