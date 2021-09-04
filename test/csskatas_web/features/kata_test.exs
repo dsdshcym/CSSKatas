@@ -17,7 +17,7 @@ defmodule CSSKatasWeb.Features.KataTest do
     # Checks solution that is not a match
     |> fill_solution(~s{<button class="border rounded px-4">Submit</button>})
     |> click(button("Check"))
-    |> assert_has(css("p", text: "Oops, Preview doesn't match the Design"))
+    |> assert_error_appeared()
 
     # Resets the editor
     |> click(button("Reset"))
@@ -48,6 +48,11 @@ defmodule CSSKatasWeb.Features.KataTest do
   defp assert_show_congrat_message(session) do
     session
     |> assert_has(css("h3", text: "Congratulations"))
+  end
+
+  defp assert_error_appeared(session) do
+    session
+    |> assert_has(css("p", text: "Oops, Preview doesn't match the Design"))
   end
 
   defp assert_error_dismissed(session) do
