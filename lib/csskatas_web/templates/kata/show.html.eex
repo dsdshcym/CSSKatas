@@ -43,9 +43,10 @@
       class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
     >
       <p
-        x-text="error"
         class="px-4 py-2 text-gray-700 text-sm font-medium tracking-tight bg-gray-100 border border-red-500 rounded-2xl shadow-md"
-      ></p>
+      >
+        Oops, Preview doesn't match the Design.
+      </p>
     </div>
 
     <div class="flex space-x-2">

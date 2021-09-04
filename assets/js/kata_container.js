@@ -21,7 +21,7 @@ let preflight = () => {
 }
 
 let build = (initial_html, design) => ({
-  error: "",
+  error: false,
   status: "pending",
   congrat: false,
   html: initial_html,
@@ -51,7 +51,7 @@ let build = (initial_html, design) => ({
     })
   },
   resetError() {
-    this.error = ""
+    this.error = false
   },
   setEditorValue(string) {
     window.editor_view.dispatch({
@@ -70,7 +70,7 @@ let build = (initial_html, design) => ({
     this.resetSolution()
   },
   displayError() {
-    this.error = "Oops, Preview doesn't match the Design."
+    this.error = true
 
     setTimeout(() => this.resetError(), 3000)
   },
