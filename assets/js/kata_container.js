@@ -22,6 +22,7 @@ let preflight = () => {
 
 let build = (initial_html, design) => ({
   flash: "",
+  status: "pending",
   congrat: false,
   html: initial_html,
   design: design,
@@ -80,16 +81,19 @@ let build = (initial_html, design) => ({
     })
   },
   check(dispatchFn) {
+    this.status = "checking"
     var target = this.$refs.design_preview
     var work = this.$refs.solution_preview
     this.diff(
       target,
       work,
       () => {
+        this.status = "passed"
         this.congrat = true
         confetti()
       },
       () => {
+        this.status = "pending"
         this.flash = "Oops, Preview doesn't match the Design."
       }
     )
