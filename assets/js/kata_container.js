@@ -80,7 +80,7 @@ let build = (initial_html, design) => ({
       })
     })
   },
-  check(dispatchFn) {
+  check() {
     this.status = "checking"
     var target = this.$refs.design_preview
     var work = this.$refs.solution_preview
