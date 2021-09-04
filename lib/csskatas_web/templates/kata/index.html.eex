@@ -4,7 +4,7 @@
       <li>
         <%= link(to: CSSKatasWeb.Router.Helpers.kata_path(@conn, :show, kata.slug)) do %>
           <div
-            class="group border-2 rounded shadow hover:shadow-xl overflow-hidden transition"
+            class="group border-2 rounded shadow hover:shadow-xl overflow-hidden hover:transform hover:scale-105 transition"
           >
             <div class="shadow-sm">
               <div class="h-72">
