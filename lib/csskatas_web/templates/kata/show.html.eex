@@ -64,7 +64,7 @@
     </div>
 
     <div class="flex items-baseline space-x-1.5">
-      <a href="#" aria-label="Home">
+      <a href="/" aria-label="Home">
         <div class="flex items-baseline font-sans select-none space-x-0.5">
           <span
             class="text-3xl font-black tracking-tighter"

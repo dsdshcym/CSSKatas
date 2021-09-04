@@ -19,7 +19,7 @@
         >
           <div class="flex flex-grow flex-shrink-0 items-center lg:flex-grow-0">
             <div class="flex items-center justify-between w-full md:w-auto">
-              <a href="#" aria-label="Home">
+              <a href="/" aria-label="Home">
                 <div
                   class="flex items-baseline font-sans select-none space-x-0.5"
                 >
