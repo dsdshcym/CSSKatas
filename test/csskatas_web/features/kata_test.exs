@@ -19,6 +19,11 @@ defmodule CSSKatasWeb.Features.KataTest do
     |> click(button("Check"))
     |> assert_has(css("p", text: "Oops, Preview doesn't match the Design"))
 
+    # Resets the editor
+    |> click(button("Reset"))
+    |> assert_filled_solution(~s{<button class="border rounded">Submit</button>})
+    |> refute_has(css("p", text: "Oops, Preview doesn't match the Design"))
+
     # Checks solution that is a match
     |> fill_solution(~s{<button class="border rounded px-4 py-2">Submit</button>})
     |> click(button("Check"))
