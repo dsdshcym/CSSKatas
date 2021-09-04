@@ -32,7 +32,7 @@
     class="relative flex flex-col justify-end space-y-2 md:flex-row md:items-center md:space-x-4 md:space-y-0"
   >
     <div
-      x-show="flash"
+      x-show="error"
       x-cloak
       x-transition:enter="transition ease-out duration-300"
       x-transition:enter-start="transform -translate-y-full"
@@ -40,7 +40,7 @@
       class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
     >
       <p
-        x-text="flash"
+        x-text="error"
         class="px-4 py-2 text-gray-700 text-sm font-medium tracking-tight bg-gray-100 border border-red-500 rounded-2xl shadow-md"
       ></p>
     </div>

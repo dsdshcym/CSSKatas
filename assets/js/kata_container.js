@@ -21,7 +21,7 @@ let preflight = () => {
 }
 
 let build = (initial_html, design) => ({
-  flash: "",
+  error: "",
   status: "pending",
   congrat: false,
   html: initial_html,
@@ -50,8 +50,8 @@ let build = (initial_html, design) => ({
       parent: document.querySelector("#editor"),
     })
   },
-  resetFlash() {
-    this.flash = ""
+  resetError() {
+    this.error = ""
   },
   setEditorValue(string) {
     window.editor_view.dispatch({
@@ -66,7 +66,7 @@ let build = (initial_html, design) => ({
     this.setEditorValue(initial_html)
   },
   reset() {
-    this.resetFlash()
+    this.resetError()
     this.resetSolution()
   },
   toPixelData(dom) {
@@ -106,7 +106,7 @@ let build = (initial_html, design) => ({
       },
       () => {
         this.status = "pending"
-        this.flash = "Oops, Preview doesn't match the Design."
+        this.error = "Oops, Preview doesn't match the Design."
       }
     )
   },
