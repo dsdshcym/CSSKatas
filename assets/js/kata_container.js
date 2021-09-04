@@ -23,7 +23,6 @@ let preflight = () => {
 let build = (initial_html, design) => ({
   error: false,
   status: "pending",
-  congrat: false,
   html: initial_html,
   design: design,
   init() {
@@ -106,7 +105,6 @@ let build = (initial_html, design) => ({
       work,
       () => {
         this.status = "passed"
-        this.congrat = true
         confetti()
       },
       () => {
