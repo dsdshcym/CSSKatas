@@ -69,6 +69,9 @@ let build = (initial_html, design) => ({
     this.resetError()
     this.resetSolution()
   },
+  displayError() {
+    this.error = "Oops, Preview doesn't match the Design."
+  },
   toPixelData(dom) {
     var scale = 2
     return domtoimage.toPixelData(dom, {
@@ -106,7 +109,7 @@ let build = (initial_html, design) => ({
       },
       () => {
         this.status = "pending"
-        this.error = "Oops, Preview doesn't match the Design."
+        this.displayError()
       }
     )
   },
