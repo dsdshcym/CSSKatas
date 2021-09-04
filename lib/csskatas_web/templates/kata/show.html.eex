@@ -47,22 +47,26 @@
       </p>
     </div>
 
-    <a href="#" aria-label="Home">
-      <div class="flex items-baseline font-sans space-x-0.5">
-        <span
-          class="text-3xl font-black tracking-tighter"
-          style="color: #264de4"
-        >
-          CSS
-        </span>
-        <span
-          class="text-3xl font-black tracking-tighter"
-          style="color: #e4264d"
-        >
-          Katas
-        </span>
-      </div>
-    </a>
+    <div class="flex items-baseline space-x-1.5">
+      <a href="#" aria-label="Home">
+        <div class="flex items-baseline font-sans space-x-0.5">
+          <span
+            class="text-3xl font-black tracking-tighter"
+            style="color: #264de4"
+          >
+            CSS
+          </span>
+          <span
+            class="text-3xl font-black tracking-tighter"
+            style="color: #e4264d"
+          >
+            Katas
+          </span>
+        </div>
+      </a>
+
+      <span class="text-indigo-600 italic font-medium select-none">dojo</span>
+    </div>
 
     <div class="flex space-x-2">
       <button
