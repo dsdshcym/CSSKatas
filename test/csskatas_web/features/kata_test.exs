@@ -51,7 +51,13 @@ defmodule CSSKatasWeb.Features.KataTest do
   end
 
   defp assert_error_dismissed(session) do
+    assert {:ok, :error_HUD_dismissed} =
+             retry(fn ->
+               if has?(session, css("p", text: "Oops, Preview doesn't match the Design")),
+                 do: {:error, :still_has_error_HUD},
+                 else: {:ok, :error_HUD_dismissed}
+             end)
+
     session
-    |> refute_has(css("p", text: "Oops, Preview doesn't match the Design"))
   end
 end
