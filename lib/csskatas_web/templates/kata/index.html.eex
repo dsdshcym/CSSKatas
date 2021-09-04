@@ -3,7 +3,7 @@
     <%= for kata <- @katas do %>
       <li>
         <%= link(to: CSSKatasWeb.Router.Helpers.kata_path(@conn, :show, kata.slug)) do %>
-          <div class="border-2 rounded shadow hover:shadow-xl transition">
+          <div class="group border-2 rounded shadow hover:shadow-xl transition">
             <div class="shadow-sm">
               <div class="h-72">
                 <div class="flex flex-col justify-between h-full divide-y-2">
@@ -11,7 +11,12 @@
                     <%= kata.title %>
                   </div>
 
-                  <div class="flex flex-1 flex-col justify-center px-4">
+                  <div
+                    class="relative flex flex-1 flex-col justify-center px-4"
+                  >
+                    <div
+                      class="absolute inset-0 group-hover:block hidden bg-gray-700 bg-opacity-25"
+                    ></div>
                     <div class="flex items-center justify-center">
                       <%= raw kata.design %>
                     </div>
