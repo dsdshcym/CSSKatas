@@ -71,7 +71,7 @@
           </svg>
         </div>
 
-        <div x-show="status !== 'checking'" x-cloak>Check</div>
+        <div x-show="status !== 'checking'">Check</div>
       </button>
       <button
         x-on:click="reset()"
