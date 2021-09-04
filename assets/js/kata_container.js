@@ -71,6 +71,8 @@ let build = (initial_html, design) => ({
   },
   displayError() {
     this.error = "Oops, Preview doesn't match the Design."
+
+    setTimeout(() => this.resetError(), 3000)
   },
   toPixelData(dom) {
     var scale = 2
