@@ -19,7 +19,9 @@
                     <div
                       class="absolute inset-0 bg-gray-700 bg-opacity-0 group-hover:bg-opacity-25 transition"
                     ></div>
-                    <div class="flex items-center justify-center">
+                    <div
+                      class="flex items-center justify-center group-hover:transform group-hover:scale-105 transition"
+                    >
                       <%= raw kata.design %>
                     </div>
                   </div>
