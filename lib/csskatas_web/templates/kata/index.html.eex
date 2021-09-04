@@ -17,7 +17,7 @@
                     class="relative flex flex-1 flex-col justify-center px-4"
                   >
                     <div
-                      class="absolute inset-0 group-hover:block hidden bg-gray-700 bg-opacity-25"
+                      class="absolute inset-0 bg-gray-700 bg-opacity-0 group-hover:bg-opacity-25 transition"
                     ></div>
                     <div class="flex items-center justify-center">
                       <%= raw kata.design %>
