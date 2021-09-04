@@ -28,9 +28,7 @@
       </div>
     </div>
   </div>
-  <div
-    class="relative flex flex-col justify-end space-y-2 md:flex-row md:items-center md:space-x-4 md:space-y-0"
-  >
+  <div class="relative flex items-center justify-between px-4 py-2">
     <div
       x-show="error"
       x-cloak
@@ -48,6 +46,23 @@
         Oops, Preview doesn't match the Design.
       </p>
     </div>
+
+    <a href="#" aria-label="Home">
+      <div class="flex items-baseline font-sans space-x-0.5">
+        <span
+          class="text-3xl font-black tracking-tighter"
+          style="color: #264de4"
+        >
+          CSS
+        </span>
+        <span
+          class="text-3xl font-black tracking-tighter"
+          style="color: #e4264d"
+        >
+          Katas
+        </span>
+      </div>
+    </a>
 
     <div class="flex space-x-2">
       <button
