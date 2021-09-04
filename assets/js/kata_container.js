@@ -54,7 +54,13 @@ let build = (initial_html, design) => ({
     this.flash = ""
   },
   resetSolution() {
-    this.html = initial_html
+    window.editor_view.dispatch({
+      changes: {
+        from: 0,
+        to: window.editor_view.state.doc.length,
+        insert: initial_html
+      }
+    })
   },
   reset() {
     this.resetFlash()
