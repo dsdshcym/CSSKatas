@@ -9,7 +9,13 @@ defmodule CSSKatas.Kata do
       initial_html: path |> read!("initial.html"),
       design: path |> read!("design.html"),
       instruction:
-        path |> read!("instruction.md") |> Earmark.as_html!(compact_output: true, escape: false)
+        path
+        |> read!("instruction.md")
+        |> Earmark.as_html!(
+          compact_output: true,
+          escape: false,
+          smartypants: false
+        )
     }
   end
 
