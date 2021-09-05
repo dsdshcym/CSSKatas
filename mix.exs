@@ -33,6 +33,7 @@ defmodule CSSKatas.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:earmark, ">= 1.4.15"},
       {:opentelemetry, "~> 1.0.0-rc", override: true},
       {:opentelemetry_api, "~> 1.0.0-rc", override: true},
       {:opentelemetry_honeycomb, "~> 0.5.0-rc.1"},
