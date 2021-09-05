@@ -8,7 +8,8 @@ defmodule CSSKatas.Kata do
       slug: Path.basename(path),
       initial_html: path |> read!("initial.html"),
       design: path |> read!("design.html"),
-      instruction: path |> read!("instruction.html")
+      instruction:
+        path |> read!("instruction.html") |> Earmark.as_html!(compact_output: true, escape: false)
     }
   end
 
