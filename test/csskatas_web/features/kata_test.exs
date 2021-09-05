@@ -13,7 +13,7 @@ defmodule CSSKatasWeb.Features.KataTest do
     |> click(link("Start Practicing", count: 2, at: 1))
 
     # Visits Kata show page
-    |> visit("/katas/button-with-paddings")
+    |> click(link("Tailwind CSS 101 - Paddings"))
     |> assert_has(css("h2", text: "Tailwind CSS 101 - Paddings"))
 
     # Reads instruction and initial solution
