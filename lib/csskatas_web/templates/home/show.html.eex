@@ -375,12 +375,12 @@
       >
         Sign up for our newsletter
       </h3>
-      <p class="max-w-md text-gray-400">
+      <p class="max-w-md text-gray-400 xl:max-w-xl">
         Drop us your email and we'll send you a regular update for the new
         katas.
       </p>
     </div>
-    <div class="flex-1 pt-4 xl:pt-0">
+    <div class="flex-1 pt-4 xl:pt-0 xl:max-w-3xl">
       <script
         async
         data-uid="c6b062ddfe"
