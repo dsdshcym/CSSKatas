@@ -135,7 +135,7 @@
       <h2 class="text-lg font-medium tracking-tight leading-5">
         <%= @kata.title %>
       </h2>
-      <div class="max-w-2xl text-gray-500 text-sm italic">
+      <div class="prose-sm italic">
         <%= raw(@kata.instruction) %>
       </div>
     </div>
