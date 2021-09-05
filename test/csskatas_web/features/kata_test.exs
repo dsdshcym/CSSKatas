@@ -11,7 +11,7 @@ defmodule CSSKatasWeb.Features.KataTest do
     |> assert_has(css("h2", text: "Tailwind CSS 101 - Paddings"))
 
     # Reads instruction and initial solution
-    |> assert_has(css("p", text: "This is how padding works in Tailwind CSS"))
+    |> assert_has(css("p", text: "To make a button, we need to add some spaces"))
     |> assert_filled_solution(~s{<button class="border rounded">Button</button>})
 
     # Checks solution that is not a match
