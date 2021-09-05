@@ -12,6 +12,7 @@ import Config
 config :csskatas, CSSKatasWeb.Endpoint,
   server: true,
   url: [host: "broken-hill-3164.fly.dev", port: 80],
+  force_ssl: [rewrite_on: [:x_forwarded_proto], host: nil],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
