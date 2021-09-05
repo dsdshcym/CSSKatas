@@ -6,6 +6,9 @@ defmodule CSSKatasWeb.Features.KataTest do
 
   feature "Kata Workflow", %{session: session} do
     session
+    # Visits home page
+    |> visit("/")
+
     # Visits Kata show page
     |> visit("/katas/button-with-paddings")
     |> assert_has(css("h2", text: "Tailwind CSS 101 - Paddings"))
