@@ -25,7 +25,7 @@ jobs:
           path: deps
           key: ${{ runner.OS }}-deps-${{ hashFiles('**/mix.lock') }}
           restore-keys: |
-            ${{ runner.OS }}-deps-${{ env.cache-name }}-
+            ${{ runner.OS }}-deps-${{ hashFiles('**/mix.lock') }}
             ${{ runner.OS }}-deps-
       - name: Recover build cache
         uses: actions/cache@v2
