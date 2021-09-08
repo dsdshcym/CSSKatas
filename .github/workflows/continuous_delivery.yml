@@ -24,6 +24,7 @@ jobs:
 
   deploy:
     name: Deploy to fly.io
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
