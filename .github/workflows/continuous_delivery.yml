@@ -19,6 +19,22 @@ jobs:
         with:
           elixir-version: 1.12.x
           otp-version: 24.x
+      - name: Recover deps cache
+        uses: actions/cache@v2
+        with:
+          path: deps
+          key: ${{ runner.OS }}-deps-${{ hashFiles('**/mix.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-deps-${{ env.cache-name }}-
+            ${{ runner.OS }}-deps-
+      - name: Recover build cache
+        uses: actions/cache@v2
+        with:
+          path: _build
+          key: ${{ runner.OS }}-build-${{ github.ref }}
+          restore-keys: |
+            ${{ runner.OS }}-build-${{ github.ref }}
+            ${{ runner.OS }}-build-
       - run: mix setup
       - run: mix test
       - name: Archive screenshots on failure
