@@ -22,6 +22,7 @@ jobs:
       - run: mix setup
       - run: mix test
       - name: Archive screenshots on failure
+        if: ${{ failure() }}
         uses: actions/upload-artifact@v2
         with:
           name: test-failure-screenshots
