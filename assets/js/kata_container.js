@@ -14,7 +14,7 @@ let preflight = () => {
         super()
 
         const shadowRoot = this.attachShadow({ mode: "open" })
-        shadowRoot.innerHTML = `<link href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet"> <div id="preview" class="flex justify-center"></div>`
+        shadowRoot.innerHTML = `<link href="https://unpkg.com/tailwindcss@2.2.10/dist/tailwind.min.css" rel="stylesheet"> <div id="preview" class="flex justify-center"></div>`
       }
     }
   )
