@@ -21,6 +21,11 @@ jobs:
           otp-version: 24.x
       - run: mix setup
       - run: mix test
+      - name: Archive screenshots on failure
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-failure-screenshots
+          path: screenshots
 
   deploy:
     name: Deploy to fly.io
