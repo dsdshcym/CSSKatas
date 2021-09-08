@@ -6,6 +6,22 @@ on:
       - "master"
 
 jobs:
+  test:
+    name: Mix Test
+    runs-on: ubuntu-latest
+    env:
+      MIX_ENV: test
+    steps:
+      - uses: actions/checkout@v2
+      - uses: nanasess/setup-chromedriver@master
+      - name: Set up Elixir
+        uses: actions/setup-elixir@v1
+        with:
+          elixir-version: 1.12.x
+          otp-version: 24.x
+      - run: mix setup
+      - run: mix test
+
   deploy:
     name: Deploy to fly.io
     runs-on: ubuntu-latest
