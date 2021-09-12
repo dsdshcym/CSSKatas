@@ -19,6 +19,12 @@ defmodule CSSKatasWeb.Router do
 
     get "/", HomeController, :show
 
+    resources "/tracks", TrackController,
+      param: "slug",
+      only: [
+        :index
+      ]
+
     resources "/katas", KataController,
       param: "slug",
       only: [
