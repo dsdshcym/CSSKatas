@@ -11,6 +11,7 @@ defmodule CSSKatasWeb.Features.KataTest do
 
     # Visits Tracks index page
     |> click(link("Start Practicing", count: 2, at: 1))
+    |> assert_has(css("h1", text: "Tracks"))
     |> assert_has(css("h2", text: "Tailwind CSS 101"))
 
     # Visits Kata show page
