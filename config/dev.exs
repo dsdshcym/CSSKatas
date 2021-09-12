@@ -58,8 +58,7 @@ config :csskatas, CSSKatasWeb.Endpoint,
       ~r"priv/gettext/.*(po)$",
       ~r"lib/csskatas_web/(live|views)/.*(ex)$",
       ~r"lib/csskatas_web/templates/.*(eex)$",
-      ~r"tracks/.*",
-      ~r"katas/.*"
+      ~r"tracks/.*"
     ]
   ]
 

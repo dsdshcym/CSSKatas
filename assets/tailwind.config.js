@@ -5,8 +5,6 @@ module.exports = {
   purge: [
     "./js/**/*.js",
     "../lib/*_web/**/*.*ex",
-    "../katas/**/*.html",
-    "../katas/**/*.md",
     "../tracks/**/*.html",
     "../tracks/**/*.md"
   ],
