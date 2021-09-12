@@ -36,6 +36,10 @@ defmodule CSSKatasWeb.Features.KataTest do
     |> fill_solution(~s{<button class="border rounded px-4 py-2">Button</button>})
     |> click(button("Check"))
     |> assert_show_congrat_message()
+
+    # Redirects back to Tracks index page
+    |> click(button("Pick next Kata"))
+    |> assert_has(css("h1", text: "Tracks"))
   end
 
   defp assert_filled_solution(session, text) do
