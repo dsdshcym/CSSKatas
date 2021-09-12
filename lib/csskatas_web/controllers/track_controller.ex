@@ -6,7 +6,7 @@ defmodule CSSKatasWeb.TrackController do
 
     conn
     |> assign(:katas, katas)
-    |> assign(:page_title, "Katas")
+    |> assign(:page_title, "Tracks")
     |> render(:index)
   end
 end
