@@ -27,6 +27,7 @@ COPY config config
 
 # copy katas folder to seed data
 COPY katas katas
+COPY tracks tracks
 
 COPY assets/package.json assets/package-lock.json ./assets/
 RUN mix setup
