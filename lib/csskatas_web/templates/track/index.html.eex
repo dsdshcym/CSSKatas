@@ -33,7 +33,7 @@
   <%= for track <- @tracks do %>
     <div class="px-4 space-y-4 sm:px-6 lg:px-8">
       <h2
-        class="inline-block py-1 text-indigo-700 text-3xl font-bold tracking-tight leading-none border-b-2"
+        class="inline-block py-1 text-transparent text-3xl font-bold tracking-tight leading-none bg-gradient-to-r bg-clip-text border-b-2 from-blue-700 to-blue-500"
       >
         <%= track.name %>
       </h2>
