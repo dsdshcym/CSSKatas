@@ -29,10 +29,17 @@
   </div>
 </div>
 
-<div class="py-12 bg-white">
-  <div class="px-4 sm:px-6 lg:px-8">
-    <%= render CSSKatasWeb.KataView, "_katas.html", katas: @katas, conn: @conn %>
-  </div>
+<div class="py-12 space-y-12">
+  <%= for track <- @tracks do %>
+    <div class="px-4 space-y-4 sm:px-6 lg:px-8">
+      <h2
+        class="inline-block py-1 text-indigo-700 text-3xl font-bold tracking-tight leading-none border-b-2"
+      >
+        <%= track.name %>
+      </h2>
+      <%= render CSSKatasWeb.KataView, "_katas.html", katas: track.katas, conn: @conn %>
+    </div>
+  <% end %>
 </div>
 
 <div class="py-10 bg-gray-800" id="newsletter">

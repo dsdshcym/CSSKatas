@@ -2,10 +2,10 @@ defmodule CSSKatasWeb.TrackController do
   use CSSKatasWeb, :controller
 
   def index(conn, _params) do
-    {:ok, katas} = CSSKatas.get_katas()
+    {:ok, tracks} = CSSKatas.get_tracks()
 
     conn
-    |> assign(:katas, katas)
+    |> assign(:tracks, tracks)
     |> assign(:page_title, "Tracks")
     |> render(:index)
   end
