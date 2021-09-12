@@ -9,12 +9,13 @@ defmodule CSSKatasWeb.Features.KataTest do
     # Visits home page
     |> visit("/")
 
-    # Visits Katas index page
+    # Visits Tracks index page
     |> click(link("Start Practicing", count: 2, at: 1))
+    |> assert_has(css("h2", text: "Tailwind CSS 101"))
 
     # Visits Kata show page
-    |> click(link("Tailwind CSS 101 - Paddings"))
-    |> assert_has(css("h2", text: "Tailwind CSS 101 - Paddings"))
+    |> click(link("Paddings"))
+    |> assert_has(css("h2", text: "Paddings"))
 
     # Reads instruction and initial solution
     |> assert_text("To make a button, we need to add some spaces")
