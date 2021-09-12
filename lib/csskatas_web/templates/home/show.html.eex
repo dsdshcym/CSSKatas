@@ -75,7 +75,7 @@
               >Newsletter</a
             >
             <a
-              href="<%= CSSKatasWeb.Router.Helpers.kata_path(@conn, :index) %>"
+              href="<%= CSSKatasWeb.Router.Helpers.track_path(@conn, :index) %>"
               class="ml-8 text-indigo-600 hover:text-indigo-900 font-medium transition duration-150 ease-in-out"
               >Start Practicing</a
             >
@@ -158,7 +158,7 @@
             </div>
             <div>
               <a
-                href="<%= CSSKatasWeb.Router.Helpers.kata_path(@conn, :index) %>"
+                href="<%= CSSKatasWeb.Router.Helpers.track_path(@conn, :index) %>"
                 class="block px-5 py-3 w-full text-center text-indigo-600 hover:text-indigo-700 focus:text-indigo-700 font-medium hover:bg-gray-100 focus:bg-gray-100 bg-gray-50 focus:outline-none transition duration-150 ease-in-out"
                 role="menuitem"
                 >Start Practicing</a
@@ -192,7 +192,7 @@
           <div class="mt-5 sm:flex sm:justify-center sm:mt-8 lg:justify-start">
             <div class="rounded-md shadow">
               <a
-                href="<%= CSSKatasWeb.Router.Helpers.kata_path(@conn, :index) %>"
+                href="<%= CSSKatasWeb.Router.Helpers.track_path(@conn, :index) %>"
                 class="focus:shadow-outline-indigo flex items-center justify-center px-8 py-3 w-full text-white text-base font-medium leading-6 hover:bg-indigo-500 bg-indigo-600 border focus:border-indigo-700 border-transparent rounded-md focus:outline-none transition duration-150 ease-in-out md:px-10 md:py-4 md:text-lg"
                 >Start Practicing</a
               >
