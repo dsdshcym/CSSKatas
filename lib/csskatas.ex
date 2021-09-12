@@ -8,10 +8,12 @@ defmodule CSSKatas do
   """
 
   kata_paths =
-    "../katas"
+    "../tracks"
     |> Path.expand(__DIR__)
     |> Path.join("*")
+    |> Path.join("*")
     |> Path.wildcard()
+    |> Enum.filter(&File.dir?/1)
 
   for kata_path <- kata_paths do
     for file_path <- kata_path |> Path.join("*") |> Path.wildcard() do
