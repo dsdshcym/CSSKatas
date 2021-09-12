@@ -44,6 +44,16 @@ defmodule CSSKatas do
       track
     end
 
+  def get_tracks() do
+    {:ok, unquote(Macro.escape(tracks))}
+  end
+
+  for track <- tracks do
+    def get_track(unquote(track.slug)) do
+      {:ok, unquote(Macro.escape(track))}
+    end
+  end
+
   katas =
     tracks
     |> Enum.flat_map(& &1.katas)
