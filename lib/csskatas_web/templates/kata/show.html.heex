@@ -1,5 +1,5 @@
 <div
-  x-data="kataContainer(`<%= @kata.initial_html %>`, `<%= @kata.design %>`)"
+  x-data={"kataContainer(`#{@kata.initial_html}`, `#{@kata.design}`)"}
   class="relative flex flex-col h-screen divide-y"
 >
   <div
