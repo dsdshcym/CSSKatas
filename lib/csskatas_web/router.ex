@@ -17,9 +17,11 @@ defmodule CSSKatasWeb.Router do
   scope "/", CSSKatasWeb do
     pipe_through :browser
 
-    live "/", HomeLive, :show
+    live_session :default do
+      live "/", HomeLive, :show
 
-    live "/tracks", TrackLive, :index
+      live "/tracks", TrackLive, :index
+    end
 
     resources "/katas", KataController,
       param: "slug",
