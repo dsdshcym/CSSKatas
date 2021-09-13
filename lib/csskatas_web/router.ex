@@ -17,7 +17,7 @@ defmodule CSSKatasWeb.Router do
   scope "/", CSSKatasWeb do
     pipe_through :browser
 
-    get "/", HomeController, :show
+    live "/", HomeLive, :show
 
     live "/tracks", TrackLive, :index
 
