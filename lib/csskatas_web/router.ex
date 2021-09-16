@@ -24,12 +24,6 @@ defmodule CSSKatasWeb.Router do
 
       live "/tracks", TrackLive, :index
     end
-
-    resources "/katas", KataController,
-      param: "slug",
-      only: [
-        :index
-      ]
   end
 
   # Other scopes may use custom stacks.
