@@ -34,7 +34,7 @@
       </div>
 
       <div class="flex justify-end">
-        <%= link(to: CSSKatasWeb.Router.Helpers.track_path(CSSKatasWeb.Endpoint, :index)) do %>
+        <%= live_redirect(to: CSSKatasWeb.Router.Helpers.track_path(CSSKatasWeb.Endpoint, :index)) do %>
           <button
             class="px-4 py-2 text-white hover:bg-indigo-500 bg-indigo-600 rounded transition duration-150 ease-in-out"
           >
