@@ -20,14 +20,15 @@ defmodule CSSKatasWeb.Router do
     live_session :default do
       live "/", HomeLive, :show
 
+      live "/katas/:slug", KataLive, :show
+
       live "/tracks", TrackLive, :index
     end
 
     resources "/katas", KataController,
       param: "slug",
       only: [
-        :index,
-        :show
+        :index
       ]
   end
 

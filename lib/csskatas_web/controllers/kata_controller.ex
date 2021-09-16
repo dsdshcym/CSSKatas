@@ -9,12 +9,4 @@ defmodule CSSKatasWeb.KataController do
     |> assign(:page_title, "Katas")
     |> render(:index)
   end
-
-  def show(conn, params) do
-    {:ok, kata} = CSSKatas.get_kata(params["slug"])
-
-    conn
-    |> assign(:page_title, kata.title)
-    |> render(:show, kata: kata)
-  end
 end
