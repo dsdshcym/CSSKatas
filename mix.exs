@@ -42,7 +42,7 @@ defmodule CSSKatas.MixProject do
       {:hackney, ">= 1.11.0"},
       {:poison, ">= 1.5.0"},
       {:wallaby, "~> 0.28.0", runtime: false, only: :test},
-      {:phoenix, "~> 1.6.0-rc.0", override: true},
+      {:phoenix, "~> 1.6.0"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 0.16.0"},
