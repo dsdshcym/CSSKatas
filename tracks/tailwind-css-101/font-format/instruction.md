@@ -19,3 +19,10 @@ Tailwind CSS provides several utilities to control font in different aspects:
   - `text-2xl` 
 
 - Control font style with `italic` or `non-italic`.
+
+
+Check these docs for more details:
+- [Font Family - Tailwind CSS](https://tailwindcss.com/docs/font-family)
+- [Font Weight - Tailwind CSS](https://tailwindcss.com/docs/font-weight)
+- [Font Size - Tailwind CSS](https://tailwindcss.com/docs/font-size)
+- [Font Style - Tailwind CSS](https://tailwindcss.com/docs/font-style)
