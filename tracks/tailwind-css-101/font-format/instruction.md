@@ -1,6 +1,6 @@
 Font is as important as the content itself, different formats serve different purposes.
 
-For example, bold font is considered to be more important than thin. Italic font attracts more attention than non-italic.
+For example, bold font is considered to be more important than thin. Italic font attracts more attention than not-italic font.
 
 Tailwind CSS provides several utilities to control font in different aspects:
 
@@ -18,7 +18,7 @@ Tailwind CSS provides several utilities to control font in different aspects:
   - `text-base`
   - `text-2xl` 
 
-- Control font style with `italic` or `non-italic`.
+- Control font style with `italic` or `not-italic`.
 
 
 Check these docs for more details:
