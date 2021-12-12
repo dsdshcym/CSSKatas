@@ -15,6 +15,7 @@ defmodule CSSKatasWeb.Features.KataTest do
     |> assert_has(css("h2", text: "Tailwind CSS 101"))
 
     # Visits Kata show page
+    |> touch_scroll(link("Paddings"), 0, 1)
     |> click(link("Paddings"))
     |> assert_has(css("h2", text: "Paddings"))
 
