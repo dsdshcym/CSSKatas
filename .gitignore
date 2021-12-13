@@ -29,3 +29,5 @@ csskatas-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# wallaby screenshots
+/screenshots/
