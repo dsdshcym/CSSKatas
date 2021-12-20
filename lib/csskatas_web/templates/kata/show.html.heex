@@ -143,10 +143,8 @@
     <div class="flex-1 px-4 py-2 border-l sm:px-6 lg:px-8">
       <label for="design_preview">Design:</label>
       <div class="flex justify-center">
-        <preview-container
-          x-ref="design_preview"
-          class="flex-1 px-4 py-4"
-        ></preview-container>
+        <iframe x-ref="design_preview" srcdoc={@kata.design} class="flex-1 px-4 py-4">
+        </iframe>
       </div>
     </div>
 
