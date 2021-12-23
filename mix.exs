@@ -54,7 +54,8 @@ defmodule CSSKatas.MixProject do
       {:telemetry_poller, "~> 0.5"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:tailwind, "~> 0.1", runtime: Mix.env() == :dev}
     ]
   end
 
@@ -68,8 +69,8 @@ defmodule CSSKatas.MixProject do
     [
       setup: ["deps.get", "deps.compile", "cmd --cd assets npm install"],
       "assets.deploy": [
-        "cmd --cd assets npm run deploy",
         "esbuild default --minify",
+        "tailwind default --minify",
         "phx.digest"
       ]
     ]
