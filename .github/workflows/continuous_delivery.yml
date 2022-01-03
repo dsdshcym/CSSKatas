@@ -1,9 +1,6 @@
 name: Continuous Delivery
 
-on:
-  push:
-    branches:
-      - "master"
+on: [push, pull_request]
 
 jobs:
   test:
@@ -48,6 +45,7 @@ jobs:
   deploy:
     name: Deploy to fly.io
     needs: test
+    if: ${{ github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
