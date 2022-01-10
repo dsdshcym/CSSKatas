@@ -67,7 +67,7 @@ defmodule CSSKatas.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "deps.compile", "cmd --cd assets npm install"],
+      setup: ["deps.get", "deps.compile", "cmd --cd assets npm install", "tailwind.install"],
       "assets.deploy": [
         "esbuild default --minify",
         "tailwind default --minify",
