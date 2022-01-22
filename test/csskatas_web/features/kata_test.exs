@@ -43,6 +43,36 @@ defmodule CSSKatasWeb.Features.KataTest do
     |> assert_has(css("h1", text: "Tracks"))
   end
 
+  feature "Kata Workflow - Text Decoration", %{session: session} do
+    session
+    |> visit("/katas/text-decoration")
+    |> assert_has(css("h2", text: "Text Decoration"))
+    # Checks solution that is not a match
+    |> fill_solution("""
+    <div>
+      <p class="underline decoration-sky-500">normal</p>
+      <p class="underline decoration-pink-500 decoration-dotted">dotted</p>
+      <p class="underline decoration-indigo-500 decoration-wavy">wave</p>
+    </div>
+    """)
+    |> click(button("Check"))
+    |> assert_error_appeared()
+
+    # Reset the editor
+    |> click(button("Reset"))
+
+    # Checks solution that is a match
+    |> fill_solution("""
+    <div>
+      <p class="underline decoration-sky-500">normal</p>
+      <p class="underline decoration-pink-500 decoration-dotted">dotted</p>
+      <p class="underline decoration-indigo-500 decoration-wavy">wavy</p>
+    </div>
+    """)
+    |> click(button("Check"))
+    |> assert_show_congrat_message()
+  end
+
   defp assert_filled_solution(session, text) do
     session
     |> execute_script("return window.editor_view.state.doc.toString()", [], fn result ->
