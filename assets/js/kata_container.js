@@ -3,23 +3,6 @@ import { EditorState, EditorView, basicSetup } from "@codemirror/basic-setup"
 import { html } from "@codemirror/lang-html"
 import confetti from "canvas-confetti"
 
-let preflight = () => {
-  customElements.define(
-    "preview-container",
-    class extends HTMLElement {
-      set previewHTML(html) {
-        this.shadowRoot.getElementById("preview").innerHTML = html
-      }
-      constructor() {
-        super()
-
-        const shadowRoot = this.attachShadow({ mode: "open" })
-        shadowRoot.innerHTML = `<link href="https://unpkg.com/tailwindcss@2.2.10/dist/tailwind.min.css" rel="stylesheet"> <div id="preview" class="flex justify-center"></div>`
-      }
-    }
-  )
-}
-
 let build = (initial_html, design) => ({
   error: false,
   status: "pending",
@@ -118,4 +101,4 @@ let build = (initial_html, design) => ({
   },
 })
 
-export default { preflight, build }
+export default { build }

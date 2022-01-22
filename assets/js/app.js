@@ -20,7 +20,6 @@ import Alpine from "alpinejs"
 window.Alpine = Alpine
 
 import kataContainer from "./kata_container.js"
-kataContainer.preflight()
 Alpine.data("kataContainer", kataContainer.build)
 
 Alpine.start()
