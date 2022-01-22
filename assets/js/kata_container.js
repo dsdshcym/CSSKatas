@@ -81,8 +81,8 @@ let build = (initial_html, design) => ({
   },
   check() {
     this.status = "checking"
-    var target = this.$refs.design_preview
-    var work = this.$refs.solution_preview
+    var target = this.$refs.design_preview.contentWindow.document.body
+    var work = this.$refs.solution_preview.contentWindow.document.body
     this.diff(
       target,
       work,
