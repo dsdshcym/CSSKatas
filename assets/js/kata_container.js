@@ -9,11 +9,8 @@ let build = (initial_html, design) => ({
   html: initial_html,
   design: design,
   init() {
-    this.$refs.design_preview.previewHTML = this.design
-    this.$refs.solution_preview.previewHTML = this.html
-
     this.$watch("html", (value) => {
-      this.$refs.solution_preview.previewHTML = value
+      this.$refs.solution_preview.contentWindow.document.body.innerHTML = value
     })
 
     window.editor_view = new EditorView({
