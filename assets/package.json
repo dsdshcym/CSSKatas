@@ -1,7 +1,8 @@
 {
   "devDependencies": {
     "prettier": "=2.2.1",
-    "prettier-plugin-eex": "^0.5.0"
+    "prettier-plugin-eex": "^0.5.0",
+    "prettier-plugin-tailwindcss": "^0.1.4"
   },
   "dependencies": {
     "@codemirror/basic-setup": "^0.19.0",
