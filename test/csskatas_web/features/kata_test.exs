@@ -15,26 +15,25 @@ defmodule CSSKatasWeb.Features.KataTest do
     |> assert_has(css("h2", text: "Tailwind CSS 101"))
 
     # Visits Kata show page
-    |> touch_scroll(link("Paddings"), 0, 1)
-    |> click(link("Paddings"))
-    |> assert_has(css("h2", text: "Paddings"))
+    |> click(link("Welcome to CSSKatas"))
+    |> assert_has(css("h2", text: "Welcome to CSSKatas"))
 
     # Reads instruction and initial solution
-    |> assert_text("To make a button, we need to add some spaces")
-    |> assert_filled_solution(~s{<button class="border rounded">Button</button>})
+    |> assert_text("This is CSSKatas dojo.")
+    |> assert_filled_solution(~s{CSSKatas})
 
     # Checks solution that is not a match
-    |> fill_solution(~s{<button class="border rounded px-4">Button</button>})
+    |> fill_solution(~s{CSSKatas is good!})
     |> click(button("Check"))
     |> assert_error_appeared()
 
     # Resets the editor
     |> click(button("Reset"))
-    |> assert_filled_solution(~s{<button class="border rounded">Button</button>})
+    |> assert_filled_solution(~s{CSSKatas})
     |> assert_error_dismissed()
 
     # Checks solution that is a match
-    |> fill_solution(~s{<button class="border rounded px-4 py-2">Button</button>})
+    |> fill_solution(~s{CSSKatas is awesome!})
     |> click(button("Check"))
     |> assert_show_congrat_message()
 
@@ -47,6 +46,7 @@ defmodule CSSKatasWeb.Features.KataTest do
     session
     |> visit("/katas/text-decoration")
     |> assert_has(css("h2", text: "Text Decoration"))
+
     # Checks solution that is not a match
     |> fill_solution("""
     <div>
