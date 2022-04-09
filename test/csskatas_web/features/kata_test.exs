@@ -1,8 +1,5 @@
 defmodule CSSKatasWeb.Features.KataTest do
-  use ExUnit.Case, async: true
-  use Wallaby.Feature
-
-  import Wallaby.Query
+  use CSSKatasWeb.WallabyCase, async: true
 
   feature "Kata Workflow", %{session: session} do
     session
@@ -42,70 +39,17 @@ defmodule CSSKatasWeb.Features.KataTest do
     |> assert_has(css("h1", text: "Tracks"))
   end
 
-  feature "Kata Workflow - Text Decoration", %{session: session} do
-    session
-    |> visit("/katas/text-decoration")
-    |> assert_has(css("h2", text: "Text Decoration"))
-
-    # Checks solution that is not a match
-    |> fill_solution("""
-    <div>
-      <p class="underline decoration-sky-500">normal</p>
-      <p class="underline decoration-pink-500 decoration-dotted">dotted</p>
-      <p class="underline decoration-indigo-500 decoration-wavy">wave</p>
-    </div>
-    """)
-    |> click(button("Check"))
-    |> assert_error_appeared()
-
-    # Reset the editor
-    |> click(button("Reset"))
-
-    # Checks solution that is a match
-    |> fill_solution("""
-    <div>
-      <p class="underline decoration-sky-500">normal</p>
-      <p class="underline decoration-pink-500 decoration-dotted">dotted</p>
-      <p class="underline decoration-indigo-500 decoration-wavy">wavy</p>
-    </div>
-    """)
-    |> click(button("Check"))
-    |> assert_show_congrat_message()
-  end
-
-  defp assert_filled_solution(session, text) do
-    session
-    |> execute_script("return window.editor_view.state.doc.toString()", [], fn result ->
-      assert result =~ text
-    end)
-  end
-
-  defp fill_solution(session, text) do
-    session
-    |> execute_script(
-      "window.editor_view.dispatch({changes: {from: 0, to: window.editor_view.state.doc.length, insert: arguments[0]}})",
-      [text]
-    )
-  end
-
-  defp assert_show_congrat_message(session) do
-    session
-    |> assert_has(css("h3", text: "Congratulations"))
-  end
-
-  defp assert_error_appeared(session) do
-    session
-    |> assert_has(css("p", text: "Oops, Preview doesn't match the Design"))
-  end
-
-  defp assert_error_dismissed(session) do
-    assert {:ok, :error_HUD_dismissed} =
-             retry(fn ->
-               if has?(session, css("p", text: "Oops, Preview doesn't match the Design")),
-                 do: {:error, :still_has_error_HUD},
-                 else: {:ok, :error_HUD_dismissed}
-             end)
-
-    session
-  end
+  test_kata("welcome-to-csskatas")
+  test_kata("a-utility-first-framework")
+  test_kata("text-color")
+  test_kata("text-transform")
+  test_kata("font-format")
+  test_kata("button-with-paddings")
+  test_kata("button-with-ring")
+  test_kata("button-with-bg-color")
+  test_kata("justify-between-two-buttons")
+  test_kata("rounded-avatar")
+  test_kata("text-decoration")
+  test_kata("gradient-text")
+  test_kata("decorative-quote-mark")
 end
