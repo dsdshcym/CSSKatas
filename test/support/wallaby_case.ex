@@ -34,11 +34,14 @@ defmodule CSSKatasWeb.WallabyCase do
 
       defp assert_error_dismissed(session) do
         assert {:ok, :error_HUD_dismissed} =
-                 retry(fn ->
-                   if has?(session, css("p", text: "Oops, Preview doesn't match the Design")),
-                     do: {:error, :still_has_error_HUD},
-                     else: {:ok, :error_HUD_dismissed}
-                 end)
+                 retry(
+                   fn ->
+                     if has?(session, css("p", text: "Oops, Preview doesn't match the Design")),
+                       do: {:error, :still_has_error_HUD},
+                       else: {:ok, :error_HUD_dismissed}
+                   end,
+                   1_000
+                 )
 
         session
       end
