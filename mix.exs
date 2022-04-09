@@ -41,7 +41,7 @@ defmodule CSSKatas.MixProject do
       {:opentelemetry_liveview, "~> 1.0.0-rc"},
       {:hackney, ">= 1.11.0"},
       {:poison, ">= 1.5.0"},
-      {:wallaby, "~> 0.28.0", runtime: false, only: :test},
+      {:wallaby, "~> 0.29.0", runtime: false, only: :test},
       {:phoenix, "~> 1.6.0"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
