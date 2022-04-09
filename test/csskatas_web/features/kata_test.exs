@@ -40,7 +40,6 @@ defmodule CSSKatasWeb.Features.KataTest do
   end
 
   test_kata("welcome-to-csskatas")
-  test_kata("a-utility-first-framework")
   test_kata("text-color")
   test_kata("text-transform")
   test_kata("font-format")

@@ -55,6 +55,10 @@ defmodule CSSKatasWeb.WallabyCase do
         |> assert_has(css("h2", text: "#{unquote(kata.title)}"))
         |> assert_filled_solution(unquote(kata.initial_html))
 
+        # Checks initial html is not a match
+        |> click(button("Check"))
+        |> assert_error_appeared()
+
         # Checks solution that is not a match
         |> fill_solution(Enum.join([unquote(kata.design), "mask"]))
         |> click(button("Check"))
@@ -62,6 +66,8 @@ defmodule CSSKatasWeb.WallabyCase do
 
         # Reset the editor
         |> click(button("Reset"))
+        |> assert_filled_solution(unquote(kata.initial_html))
+        |> assert_error_dismissed()
 
         # Checks solution that is a match
         |> fill_solution(unquote(kata.design))
