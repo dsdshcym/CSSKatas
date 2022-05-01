@@ -4,12 +4,22 @@ defmodule Mix.Tasks.Kata.New do
   @moduledoc """
   Create new Kata.
 
-      $ mix kata.new --slug "space-between" --track "tailwind-css-101" --position=1.0
+  Existing files will not be overwritten except `metadata.json`, you can change position
+  by running the same command with another number.
 
   ## Options
   - `--slug` - a string joined with hyphen, e.g. "space-between". (required)
   - `--track` - a directory name chosed from the tracks directory. (default: "tailwind-css-101")
   - `--position` - a float number, smaller value has a higher order. (default: 0.1)
+
+  ## Examples
+
+      $ mix kata.new --slug "space-between"
+
+  Is equivalent to:
+
+      $ mix kata.new --slug "space-between" --track "tailwind-css-101" --position=0.1
+
   """
 
   use Mix.Task
