@@ -4,21 +4,21 @@ defmodule Mix.Tasks.Kata.New do
   @moduledoc """
   Create new Kata.
 
-      $ mix kata.new --slug "space-between" --category "tailwind-css-101" --position=1.0
+      $ mix kata.new --slug "space-between" --track "tailwind-css-101" --position=1.0
 
   ## Options
   - `--slug` - a string joined with hyphen, e.g. "space-between". (required)
-  - `--category` - category is one of the root directories in tracks directory. (default: "tailwind-css-101")
+  - `--track` - a directory name chosed from the tracks directory. (default: "tailwind-css-101")
   - `--position` - a float number, smaller value has a higher order. (default: 0.1)
   """
 
   use Mix.Task
 
-  @switches [category: :string, slug: :string, position: :float]
+  @switches [track: :string, slug: :string, position: :float]
 
   @katas_home "./tracks"
   @default_position 0.1
-  @default_category "tailwind-css-101"
+  @default_track "tailwind-css-101"
   @default_files ["initial.html", "design.html", "instruction.md", "metadata.json"]
 
   @impl true
@@ -27,17 +27,17 @@ defmodule Mix.Tasks.Kata.New do
 
     slug = Keyword.fetch!(parsed, :slug)
     position = Keyword.get(parsed, :position, @default_position)
-    category = Keyword.get(parsed, :category, @default_category)
+    track = Keyword.get(parsed, :track, @default_track)
 
-    dir = get_dir_from_category_slug(category, slug)
+    dir = get_dir_from_track_slug(track, slug)
     title = get_title_from_slug(slug)
     create_files(dir, position, title)
 
     IO.puts("Please run command `mix compile --force` manually.")
   end
 
-  defp get_dir_from_category_slug(category, slug) do
-    Path.join([@katas_home, category, slug])
+  defp get_dir_from_track_slug(track, slug) do
+    Path.join([@katas_home, track, slug])
   end
 
   defp get_title_from_slug(slug) do
