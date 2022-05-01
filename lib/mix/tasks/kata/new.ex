@@ -1,6 +1,17 @@
 defmodule Mix.Tasks.Kata.New do
   @shortdoc "Create new Kata"
 
+  @moduledoc """
+  Create new Kata.
+
+      $ mix kata.new --slug "space-between" --category "tailwind-css-101" --position=1.0
+
+  ## Options
+  - `--slug` - a string joined with hyphen, e.g. "space-between". (required)
+  - `--category` - category is one of the root directories in tracks directory. (default: "tailwind-css-101")
+  - `--position` - a float number, smaller value has a higher order. (default: 0.1)
+  """
+
   use Mix.Task
 
   @switches [category: :string, slug: :string, position: :float]
