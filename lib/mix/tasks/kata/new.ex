@@ -2,10 +2,10 @@ defmodule Mix.Tasks.Kata.New do
   @shortdoc "Create new Kata"
 
   @moduledoc """
-  Create new Kata.
+  Create a new Kata.
 
-  Existing files will not be overwritten except `metadata.json`, you can change position
-  by running the same command with another number.
+  This task would only overwrite `metadata.json` if Kata files already exist.
+  So you can change position by running the same command with a new position value.
 
   ## Options
   - `--slug` - a string joined with hyphen, e.g. "space-between". (required)
@@ -43,7 +43,7 @@ defmodule Mix.Tasks.Kata.New do
     title = get_title_from_slug(slug)
     create_files(dir, position, title)
 
-    IO.puts("Please run command `mix compile --force` manually.")
+    IO.puts("Please run command `mix compile --force` manually. to compile this new Kata.")
   end
 
   defp get_dir_from_track_slug(track, slug) do
