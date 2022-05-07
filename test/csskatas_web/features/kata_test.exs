@@ -81,6 +81,28 @@ defmodule CSSKatasWeb.Features.KataTest do
     |> assert_show_congrat_message()
   end
 
+  defp do_test_kata(%{session: session, kata: %{slug: "text-decoration"} = kata}) do
+    session
+    |> visit("/katas/#{kata.slug}")
+    |> assert_has(css("h2", text: kata.title))
+    |> assert_filled_solution(kata.initial_html)
+
+    # Checks solution that is not a match
+    |> fill_solution(String.replace(kata.design, "wavy", "wave"))
+    |> click(button("Check"))
+    |> assert_error_appeared()
+
+    # Reset the editor
+    |> click(button("Reset"))
+    |> assert_filled_solution(kata.initial_html)
+    |> assert_error_dismissed()
+
+    # Checks solution that is a match
+    |> fill_solution(kata.design)
+    |> click(button("Check"))
+    |> assert_show_congrat_message()
+  end
+
   defp do_test_kata(%{session: session, kata: kata}) do
     session
     |> visit("/katas/#{kata.slug}")
