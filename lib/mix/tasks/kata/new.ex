@@ -68,7 +68,7 @@ defmodule Mix.Tasks.Kata.New do
 
       if file == "metadata.json" do
         metadata = %{position: position, title: title}
-        File.write!(path, Jason.encode!(metadata, pretty: true))
+        File.write!(path, Jason.encode!(metadata, pretty: true) <> "\n")
         IO.puts("Updated: #{path}")
       end
     end)
