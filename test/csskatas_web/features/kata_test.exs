@@ -67,6 +67,7 @@ defmodule CSSKatasWeb.Features.KataTest do
     feature("rounded-avatar", context, do: do_test_kata(context))
     feature("gradient-text", context, do: do_test_kata(context))
     feature("decorative-quote-mark", context, do: do_test_kata(context))
+    feature("text-decoration", context, do: do_test_kata(context))
   end
 
   defp do_test_kata(%{session: session, kata: %{slug: "a-utility-first-framework"} = kata}) do
@@ -117,6 +118,13 @@ defmodule CSSKatasWeb.Features.KataTest do
   defp check_mismatch_design(session, %{slug: "text-color"} = kata) do
     session
     |> fill_solution(String.replace(kata.design, "text-pink-500", "text-pink-400"))
+    |> click(button("Check"))
+    |> assert_error_appeared()
+  end
+
+  defp check_mismatch_design(session, %{slug: "text-decoration"} = kata) do
+    session
+    |> fill_solution(String.replace(kata.design, "wavy", "wave"))
     |> click(button("Check"))
     |> assert_error_appeared()
   end
