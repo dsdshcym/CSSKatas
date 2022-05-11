@@ -77,7 +77,7 @@ let build = (initial_html, design) => ({
     this.timeout = setTimeout(() => this.resetError(), 3000)
   },
   toPixelData(dom) {
-    var scale = 2
+    var scale = 1
     return domtoimage.toPixelData(dom, {
       width: dom.clientWidth * scale,
       height: dom.clientHeight * scale,
