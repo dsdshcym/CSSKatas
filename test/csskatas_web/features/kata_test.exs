@@ -115,6 +115,20 @@ defmodule CSSKatasWeb.Features.KataTest do
     |> assert_error_appeared()
   end
 
+  defp check_mismatch_design(session, %{slug: "button-with-ring"} = kata) do
+    session
+    |> fill_solution(String.replace(kata.design, "ring-green-300", "ring-green-200"))
+    |> click(button("Check"))
+    |> assert_error_appeared()
+  end
+
+  defp check_mismatch_design(session, %{slug: "text-color"} = kata) do
+    session
+    |> fill_solution(String.replace(kata.design, "text-pink-500", "text-pink-400"))
+    |> click(button("Check"))
+    |> assert_error_appeared()
+  end
+
   defp check_mismatch_design(session, kata) do
     session
     |> fill_solution(Regex.replace(~r/[a-z]/, kata.design, "!", global: false))
