@@ -3,34 +3,17 @@ import { EditorState, EditorView, basicSetup } from "@codemirror/basic-setup"
 import { html } from "@codemirror/lang-html"
 import confetti from "canvas-confetti"
 
-let preflight = () => {
-  customElements.define(
-    "preview-container",
-    class extends HTMLElement {
-      set previewHTML(html) {
-        this.shadowRoot.getElementById("preview").innerHTML = html
-      }
-      constructor() {
-        super()
-
-        const shadowRoot = this.attachShadow({ mode: "open" })
-        shadowRoot.innerHTML = `<link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> <div id="preview" class="flex justify-center"></div>`
-      }
-    }
-  )
-}
-
 let build = (initial_html, design) => ({
   error: false,
   status: "pending",
   html: initial_html,
   design: design,
   init() {
-    this.$refs.design_preview.previewHTML = this.design
-    this.$refs.solution_preview.previewHTML = this.html
+    // this.$refs.design_preview.previewHTML = this.design
+    // this.$refs.solution_preview.previewHTML = this.html
 
     this.$watch("html", (value) => {
-      this.$refs.solution_preview.previewHTML = value
+      this.$refs.solution_preview.contentWindow.document.body.innerHTML = value
     })
 
     window.editor_view = new EditorView({
@@ -101,8 +84,9 @@ let build = (initial_html, design) => ({
   },
   check() {
     this.status = "checking"
-    var target = this.$refs.design_preview
-    var work = this.$refs.solution_preview
+    var target = this.$refs.design_preview.contentWindow.document.body
+    var work = this.$refs.solution_preview.contentWindow.document.body
+
     this.diff(
       target,
       work,
@@ -118,4 +102,4 @@ let build = (initial_html, design) => ({
   },
 })
 
-export default { preflight, build }
+export default { build }
