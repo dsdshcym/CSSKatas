@@ -71,40 +71,51 @@ defmodule CSSKatasWeb.Features.KataTest do
 
   defp do_test_kata(%{session: session, kata: %{slug: "a-utility-first-framework"} = kata}) do
     session
-    |> visit("/katas/#{kata.slug}")
-    |> assert_has(css("h2", text: kata.title))
-    |> assert_filled_solution(kata.initial_html)
-
-    # Checks initial is just the solution
+    |> visit_kata_page(kata)
     |> click(button("Check"))
     |> assert_show_congrat_message()
   end
 
   defp do_test_kata(%{session: session, kata: kata}) do
     session
+    |> visit_kata_page(kata)
+    |> check_initial_design(kata)
+    |> reset_editor(kata)
+    |> check_mismatch_design(kata)
+    |> reset_editor(kata)
+    |> check_final_design(kata)
+  end
+
+  defp visit_kata_page(session, kata) do
+    session
     |> visit("/katas/#{kata.slug}")
     |> assert_has(css("h2", text: kata.title))
     |> assert_filled_solution(kata.initial_html)
+  end
 
-    # Checks initial html is not a match
-    |> click(button("Check"))
-    |> assert_error_appeared()
-
-    # Reset the editor
-    |> click(button("Reset"))
-    |> assert_error_dismissed()
-
-    # Checks solution that is not a match
-    |> fill_solution(Regex.replace(~r/[a-z]/, kata.design, "!", global: false))
-    |> click(button("Check"))
-    |> assert_error_appeared()
-
-    # Reset the editor
+  defp reset_editor(session, kata) do
+    session
     |> click(button("Reset"))
     |> assert_filled_solution(kata.initial_html)
     |> assert_error_dismissed()
+  end
 
-    # Checks solution that is a match
+  defp check_initial_design(session, kata) do
+    session
+    |> fill_solution(kata.initial_html)
+    |> click(button("Check"))
+    |> assert_error_appeared()
+  end
+
+  defp check_mismatch_design(session, kata) do
+    session
+    |> fill_solution(Regex.replace(~r/[a-z]/, kata.design, "!", global: false))
+    |> click(button("Check"))
+    |> assert_error_appeared()
+  end
+
+  defp check_final_design(session, kata) do
+    session
     |> fill_solution(kata.design)
     |> click(button("Check"))
     |> assert_show_congrat_message()
