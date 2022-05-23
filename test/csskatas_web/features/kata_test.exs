@@ -43,6 +43,98 @@ defmodule CSSKatasWeb.Features.KataTest do
     |> assert_has(css("h1", text: "Tracks"))
   end
 
+  describe "test kata by slug" do
+    setup context do
+      slug =
+        context[:test]
+        |> Atom.to_string()
+        |> String.split()
+        |> List.last()
+
+      {:ok, kata} = CSSKatas.get_kata(slug)
+      {:ok, kata: kata}
+    end
+
+    feature("welcome-to-csskatas", context, do: do_test_kata(context))
+    feature("a-utility-first-framework", context, do: do_test_kata(context))
+    feature("text-color", context, do: do_test_kata(context))
+    feature("text-transform", context, do: do_test_kata(context))
+    feature("font-format", context, do: do_test_kata(context))
+    feature("button-with-paddings", context, do: do_test_kata(context))
+    feature("button-with-ring", context, do: do_test_kata(context))
+    feature("button-with-bg-color", context, do: do_test_kata(context))
+    feature("justify-between-two-buttons", context, do: do_test_kata(context))
+    feature("rounded-avatar", context, do: do_test_kata(context))
+    feature("gradient-text", context, do: do_test_kata(context))
+    feature("decorative-quote-mark", context, do: do_test_kata(context))
+  end
+
+  defp do_test_kata(%{session: session, kata: %{slug: "a-utility-first-framework"} = kata}) do
+    session
+    |> visit_kata_page(kata)
+    |> click(button("Check"))
+    |> assert_show_congrat_message()
+  end
+
+  defp do_test_kata(%{session: session, kata: kata}) do
+    session
+    |> visit_kata_page(kata)
+    |> check_initial_design(kata)
+    |> reset_editor(kata)
+    |> check_mismatch_design(kata)
+    |> reset_editor(kata)
+    |> check_final_design(kata)
+  end
+
+  defp visit_kata_page(session, kata) do
+    session
+    |> visit("/katas/#{kata.slug}")
+    |> assert_has(css("h2", text: kata.title))
+    |> assert_filled_solution(kata.initial_html)
+  end
+
+  defp reset_editor(session, kata) do
+    session
+    |> click(button("Reset"))
+    |> assert_filled_solution(kata.initial_html)
+    |> assert_error_dismissed()
+  end
+
+  defp check_initial_design(session, kata) do
+    session
+    |> fill_solution(kata.initial_html)
+    |> click(button("Check"))
+    |> assert_error_appeared()
+  end
+
+  defp check_mismatch_design(session, %{slug: "button-with-ring"} = kata) do
+    session
+    |> fill_solution(String.replace(kata.design, "ring-green-300", "ring-green-200"))
+    |> click(button("Check"))
+    |> assert_error_appeared()
+  end
+
+  defp check_mismatch_design(session, %{slug: "text-color"} = kata) do
+    session
+    |> fill_solution(String.replace(kata.design, "text-pink-500", "text-pink-400"))
+    |> click(button("Check"))
+    |> assert_error_appeared()
+  end
+
+  defp check_mismatch_design(session, kata) do
+    session
+    |> fill_solution(Regex.replace(~r/[a-z]/, kata.design, "!", global: false))
+    |> click(button("Check"))
+    |> assert_error_appeared()
+  end
+
+  defp check_final_design(session, kata) do
+    session
+    |> fill_solution(kata.design)
+    |> click(button("Check"))
+    |> assert_show_congrat_message()
+  end
+
   defp assert_filled_solution(session, text) do
     session
     |> execute_script("return window.editor_view.state.doc.toString()", [], fn result ->
